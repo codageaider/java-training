@@ -1,3 +1,4 @@
+import java.sql.PreparedStatement;
 import java.util.Scanner;
 
 public class Main2 {
@@ -11,5 +12,13 @@ public class Main2 {
         System.out.println("area of the circle = "+area);
         // write a code to display the value of 2^3.5
 
+       PrintTriangle.printTriangle(7);
+
+        // function resuability
+        // Duplicate code X Bad programming practice.
+        // Try to avoid writing duplicate code.
+        // DRY - don't repeat yourself
+        //(i) You will be making changes only in one place
+        // (ii) It is more readable
     }
 }

@@ -15,5 +15,8 @@ public class CurrentTime {
         // 12:31 pm  , 7:01 am 41 seconds
         // IST = GMT + 5:30
         // 7:02:29 = 12:32:29
+
+
+        // write a program that takes 3 numbers from the user and print the minimum of them.
     }
 }
