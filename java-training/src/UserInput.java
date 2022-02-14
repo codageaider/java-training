@@ -1,7 +1,7 @@
 import java.sql.PreparedStatement;
 import java.util.Scanner;
 
-public class Main2 {
+public class UserInput {
     public static void main(String[] args) {
         // to calculate the area of a circle.
         // pi * radius * radius

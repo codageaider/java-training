@@ -1,4 +1,4 @@
-public class Main4 {
+public class GCDProblem {
     public static void main(String[] args) {
         // write a function to compute gcd of two numbers
     }
@@ -12,6 +12,7 @@ public class Main4 {
         }
         return gcd;
     }
+//
 // How many steps does this code take to execute or how many times it goes over the
     // for loop?  min(x,y) steps
     // Time complexity of a code /algorithm takes min(x,y) steps

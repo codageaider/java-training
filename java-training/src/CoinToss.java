@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Main3 {
+public class CoinToss {
     public static void main(String[] args) {
         // Generate a random number between 0 and 1
 //        System.out.println(Math.random());
