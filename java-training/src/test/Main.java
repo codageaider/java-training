@@ -115,7 +115,7 @@ public class Main {
         for(i=0;i<array3.length;i++) {
             System.out.println(array3[i]);
         }
-        int y = 5;
+        int y = 6;
         // factorial(y) = 1 * 2 * 3 * .... * y
         // y = 5 factorial(y) = 1 * 2* 3*4*5 = 120
 
