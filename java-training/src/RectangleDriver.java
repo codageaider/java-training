@@ -4,3 +4,7 @@ public class RectangleDriver {
         System.out.println(rectangle.getArea());
     }
 }
+/*
+Design a class that represents a TV
+
+ */
