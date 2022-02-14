@@ -109,6 +109,24 @@ public class Main {
         else
             System.out.println("even");
 
+        int[] array3 = new int[] {1,2,3,4,5,6,7,8,9,10,11,12,13};
+        // loop in java
+        System.out.println("Printing all the elements of the array");
+        for(i=0;i<array3.length;i++) {
+            System.out.println(array3[i]);
+        }
+        int y = 5;
+        // factorial(y) = 1 * 2 * 3 * .... * y
+        // y = 5 factorial(y) = 1 * 2* 3*4*5 = 120
+
+        int val=1;
+        for(i1=1;i1<=y;i1++)
+            val = val*i1;
+        System.out.println("factorial(y) = "+val);
+
+
+
+
 
 
 
