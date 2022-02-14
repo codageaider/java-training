@@ -13,10 +13,10 @@ public class Rectangle {
     public double perimeter(){
         return getWidth()*2 + getHeight()*2;
     }
-    public double getWidth(){
+    private double getWidth(){
         return bottomRightPoint.xCoordinate-topLeftPoint.xCoordinate;
     }
-    public double getHeight(){
+    private double getHeight(){
         return topLeftPoint.yCoordinate - bottomRightPoint.yCoordinate;
     }
 }
