@@ -17,7 +17,7 @@ public class Main3 {
                 System.out.print("tail  ");
         }
         System.out.println(Math.floor(0.7));
-    
+
     }
 // generating an integer between a and b both inclusive
     // generateRandomNumber(1,10) -> 1,2,3,4,5,6,7,8,9,10
