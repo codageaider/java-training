@@ -9,6 +9,7 @@ public class Main2 {
         double radius = scanner.nextDouble();
         double area = radius * radius * Math.PI;
         System.out.println("area of the circle = "+area);
+        // write a code to display the value of 2^3.5
 
     }
 }
