@@ -9,3 +9,6 @@ public class Point {
 
 }
 // write a class that represents a rectangle
+// 4 points
+
+// A class defines the properties and behaviors of an object.
