@@ -123,11 +123,48 @@ public class Main {
         for(i1=1;i1<=y;i1++)
             val = val*i1;
         System.out.println("factorial(y) = "+val);
+        int dayOfWeek =2; // 1= Monday,....7 = Sunday
+        String day;
+        switch(dayOfWeek){
+            case 1:
+                System.out.println("Monday");
+                break;
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
 
+        }
+        // for loop, while loop
 
+//        while(expression){
+//            statements;
+//        }
+        int i7=5;
+        int fact=1;
+        int ir=1;
+        while(ir<=i7){
+            fact = fact*ir;
+            ir++;
+        }
+        System.out.println("factorial of "+i7+"!="+fact);
+     int i8=1;
+       do {
+           i8++;
 
+       } while(i8<=0);
+        System.out.println("i8 = "+i8);
 
+// write a do while statement to print numbers from 1 to 10
 
+// write a program to print the following
+//        *
+//        **
+//        ***
+//        ****
+//        *****
 
 
     }
