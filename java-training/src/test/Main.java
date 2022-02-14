@@ -78,10 +78,38 @@ public class Main {
         System.out.println(array[0]);
 
         int[] array2 = new int[] {1,2,3,4,5,6,7,8,9,10};
+        // single dimensional array
         System.out.println("lst element = "+array2[9]);
         String test = "This is a sample string";
         System.out.println("length of the string = "+test.length());
         System.out.println("index = "+test.indexOf('i'));
+        System.out.println(test);
+        System.out.println(test.trim());
+        System.out.println(test.startsWith("Th"));
+        System.out.println(test.charAt(0));
+
+        int[][] matrix = {
+                {1,2,3},
+                {4,5,6},
+                {7,8,9}
+
+        };
+        System.out.println("matrix value = "+matrix[1][2]);
+        System.out.println("matrix sum = "+(matrix[0][0]+matrix[0][1]+matrix[0][2]));
+        System.out.println("length = "+matrix.length);
+        int[] array1 = new int[5];
+        System.out.println(array1[0]);
+
+        // conditionals
+
+        int n5 = 100;
+        // if n5 is an odd number print odd otherwise print even
+        if(n5%2==1) // this condition evaluated to true. then the block is executed
+            System.out.println("odd");
+        else
+            System.out.println("even");
+
+
 
 
     }
