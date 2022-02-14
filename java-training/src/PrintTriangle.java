@@ -1,6 +1,9 @@
 public class PrintTriangle {
     public static void main(String[] args) {
-        System.out.println(factorialRecursive(40));
+        // recursive function gives Stack over flow error for n >=12000
+        System.out.println(sumRecursive(12000));
+        // iterative works for
+        System.out.println(sumIterative(200000000000l));
 
 
     }
@@ -49,8 +52,22 @@ public class PrintTriangle {
             return 1;
        return n + sumRecursive(n-1);
     }
+    /* there will be 12000 function calls in this.
+    whenever a function call is made its variables are stored in something called Stack.
+    Stack takes space.
+    sumRecursive(12000) -> 12000 + sumRecursive(11999)
+                                   11999 + sumRecursive(11998)
+                                         + 11998 + sumRecursive(11997)
+                                                  + 11997 + sumRecursive(11996)
+
+                                                          4 + sumRecursive(3) = 4 +5 =9
+                                                          3 + sumRecusive(2) - 3 + 2 = 5
+                                                            1 + sumRecrusive(1)  - [1 + 1] = 2
+                                                               + 1
+     */
 
     // return the value of numbers from 1 to n
+    // There is only 1 function call
     public static long sumIterative(long n){
         long sum=0;
         for(int i=1;i<=n;i++)
