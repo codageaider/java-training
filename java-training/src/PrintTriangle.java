@@ -38,12 +38,24 @@ public class PrintTriangle {
         return fact;
     }
     // return the value of numbers from 1 to n
+    // sum(n)  = 1 + 2 + ... (n-1) + n
+    // sum(n-1)= 1 + 2 + ...+(n-1)
+    // sum(n) = sum(n-1) + n
+    // (i) figuring out the algorithm
+    //    what steps or process or approach you will use to calculate this
+    // (ii) spot the recursion <-- your observations.
     public static long sumRecursive(long n){
-
+        if(n==1)
+            return 1;
+       return n + sumRecursive(n-1);
     }
 
     // return the value of numbers from 1 to n
     public static long sumIterative(long n){
+        long sum=0;
+        for(int i=1;i<=n;i++)
+            sum+=i; // sum = sum +i;
+        return sum;
 
     }
 }
