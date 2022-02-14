@@ -51,7 +51,37 @@ public class Main {
         int n1 = ++i1%5;
         System.out.println("n1 = "+n1);
         // ++i i++
-        
+        byte n3 = 123; // 8 bits
+        short n4 = 1234; // 16 -bits
+        // int -> 32 bit
+        long z = 12345678991828l; // long has a storage of 64 bits ~ 2^64 =
+        long z2 = 1234567899183128l;
+        float f2 = 1.30f; // float - 32 bit
+        float f3 = 1.4f;
+        double d1 = 1.30;
+        double d2 = 1.4; // double - 64 bit
+        double d3 = 1.234;
+        float f4 = f2 + f3;
+        System.out.println((f4-(int)f4)*100);
+        System.out.println("f4 = "+f4);
+        System.out.println("d1 + d2 = "+(d1 + d2));
+        System.out.println("f2 + f3 = "+(f2+f3));
+        System.out.println("z+z2= "+(z+z2));
+        System.out.println(String.format("%.2f",f4));
+        char c1 = 'A';
+        System.out.println(c1);
+        int a1 = 1000_000;
+        int[] array = new int[10];
+        array[0]=1;
+        array[1]=2;
+        array[2]=3;
+        System.out.println(array[0]);
+
+        int[] array2 = new int[] {1,2,3,4,5,6,7,8,9,10};
+        System.out.println("lst element = "+array2[9]);
+        String test = "This is a sample string";
+        System.out.println("length of the string = "+test.length());
+        System.out.println("index = "+test.indexOf('i'));
 
 
     }
