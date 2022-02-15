@@ -60,4 +60,19 @@ public class Main {
     // Time complexity if O(n) or the linear search takes approximately steps = length of the array
     // Binary search -> O(log n) time or log(lenghth of the array)
     // [2,3,4],8,9,12,15   number ->4
+
+    public static int binarySearch(int[] arr, int number){
+        int low = 0;
+        int high = arr.length - 1;
+        while(high>=low){
+            int mid = (low+high)/2;
+            if(number<arr[mid])
+                high=mid-1;
+            else if(number == arr[mid])
+                return mid;
+            else low = mid+1;
+
+        }
+        return -1;
+    }
 }
