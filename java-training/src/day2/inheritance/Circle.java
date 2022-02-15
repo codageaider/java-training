@@ -1,5 +1,7 @@
 package day2.inheritance;
 
+import java.util.Objects;
+
 public class Circle extends Shape {
     private double radius;
 
@@ -29,5 +31,22 @@ public class Circle extends Shape {
     @Override
     public String toString() {
         return super.toString() + " , radius = "+radius;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+          Circle circle = (Circle)o;
+          if(circle.getRadius()==radius)
+              return true;
+          return false;
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Circle circle = (Circle) o;
+//        return Double.compare(circle.radius, radius) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(radius);
     }
 }

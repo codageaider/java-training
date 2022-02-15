@@ -9,5 +9,9 @@ public class Driver {
         System.out.println(circle.getColor());
 
         Apple apple = new Apple("apple");
+
+        Circle circle3 = new Circle(1);
+        Circle circle4 = new Circle(1);
+        System.out.println(circle3.equals(circle4));
     }
 }
