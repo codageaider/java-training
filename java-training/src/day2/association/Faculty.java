@@ -1,4 +1,4 @@
-package day2;
+package day2.association;
 
 public class Faculty {
     private Course[] courses;

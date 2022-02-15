@@ -1,13 +1,10 @@
 package day2;
 /*
-Student, Course, Faculty
-Association.
-There is an association between the student class and the course class.
-There is an association between the course class and student class.
+is-a relation and has-a relation
+A student can have multiple address
  */
 public class Student {
-    private Course[] courses;
-    private void addCourse(Course c){
+    private Name name;
+    private Address address;
 
-    }
 }

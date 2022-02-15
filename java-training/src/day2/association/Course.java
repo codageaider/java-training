@@ -1,4 +1,4 @@
-package day2;
+package day2.association;
 
 public class Course {
     private Student[] students;
@@ -8,6 +8,7 @@ public class Course {
         students=_students;
         faculty=_faculty;
     }
+    // implement this addStudent function
     public void addStudent(Student student){
 
     }

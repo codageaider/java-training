@@ -1,4 +1,4 @@
-package day2;
+package day2.association;
 
 public class driverProgram {
     public static void main(String[] args) {
