@@ -26,4 +26,8 @@ public class Circle extends Shape {
           return Math.PI*radius*radius;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + " , radius = "+radius;
+    }
 }

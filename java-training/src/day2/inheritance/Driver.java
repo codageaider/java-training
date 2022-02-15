@@ -7,5 +7,7 @@ public class Driver {
         System.out.println(circle);
         Circle circle2 = new Circle(1,"red",true);
         System.out.println(circle.getColor());
+
+        Apple apple = new Apple("apple");
     }
 }
