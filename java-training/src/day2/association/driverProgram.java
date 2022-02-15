@@ -16,8 +16,16 @@ public class driverProgram {
         course.addStudent(student4);
         course.addStudent(student5);
         course.addStudent(student6);
-
+        System.out.println("Students enrolled in course-1");
         course.print();
+
+        Course course2 = new Course();
+        course2.addStudent(student1);
+        Student student7 = new Student("name-7");
+        course2.addStudent(student7);
+
+        System.out.println("Students enrolled in cours-2");
+        course2.print();
         // course.addStudent
 
 
