@@ -36,6 +36,28 @@ public class Main {
            if(count[i]!=0)
            System.out.println("character "+(char)(i+97)+" occurs = "+count[i]);
        }
+       // write a function that takes an int array and a an int key
+        // and returns the first index of the array at which the key occurs
+        // int[], int   , -1
+
+
+
+
 
     }
+    // Linear Search
+    // Time complexity of this function
+    // length of arr
+    public static int arrayIndex(int arr[], int number) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == number) return i;
+        }
+        return -1;
+    }
+    // The array that I pass to this function will always be
+    // sorted in ascending order
+    // 4,8,2,9 -> after sorting -> 2,4,8,9
+    // Time complexity if O(n) or the linear search takes approximately steps = length of the array
+    // Binary search -> O(log n) time or log(lenghth of the array)
+    // [2,3,4],8,9,12,15   number ->4
 }
