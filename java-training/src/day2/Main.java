@@ -41,7 +41,11 @@ public class Main {
         // int[], int   , -1
 
 
-
+     int[] arr = new int[]{1,2,3,4,5,6,7};
+    int[] arr2 = reverse(arr);
+    for(int i=0;i<arr2.length;i++){
+        System.out.print(arr2[i]+" ");
+    }
 
 
     }
@@ -75,4 +79,21 @@ public class Main {
         }
         return -1;
     }
+    // write a function that takes an int array and reverses that array
+    // 1,2,3 -> 3,2,1
+
+    public static int[] reverse(int []arr)
+    {
+        int n= arr.length-1;
+        int temp;
+        for(int i=0;i< arr.length/2;i++)
+        {
+            temp=arr[i];
+            arr[i]=arr[n];
+            arr[n]=temp;
+            n--;
+        }
+        return arr;
+    }
+
 }
