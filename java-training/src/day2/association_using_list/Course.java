@@ -6,10 +6,8 @@ import java.util.List;
 public class Course {
     private List<Student> students;
     private Faculty faculty;
-    private int index;
 
     Course() {
-        index = 0;
         students = new ArrayList<>();
     }
 
