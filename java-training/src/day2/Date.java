@@ -13,10 +13,21 @@ public class Date {
         this.month = month;
         this.year = year;
     }
+// Date date = new Date(30,2,2022) <-- this is an invalid
+    // feb doesnot have 30 days
 
     private boolean validate(int day, int month, int year) {
         boolean isValid = true;
-        if(day<=0 || day >31)
+
+        if(months that have 31 days){
+            if(day>31)
+                isValid=false;
+        }
+        if(months that have 30 days){
+            if(day>30)
+                isValid=false;
+        }
+        else if(isLeapYear(year) && day>29 || !isLeapYear(year) && day >28)
             isValid=false;
         else if(month<=0 || month>12)
             isValid=false;
@@ -24,5 +35,5 @@ public class Date {
             isValid=false;
         return isValid;
     }
-
+// write a class that represents a student
 }

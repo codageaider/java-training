@@ -1,5 +1,9 @@
 package day2;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class Main {
     public static void main(String[] args) throws Exception {
         int[] array = new int[]{1,2,3,4,5};
@@ -46,8 +50,9 @@ public class Main {
     for(int i=0;i<arr2.length;i++){
         System.out.print(arr2[i]+" ");
     }
-    Circle circle = new Circle(-1);
-
+        Calendar calendar= new GregorianCalendar();
+        calendar.set(2022,1,30);
+        System.out.println("This is");
 
 
     }
