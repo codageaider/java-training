@@ -1,3 +1,5 @@
+package day1;
+
 public class TV {
     private int channelNumber;
     private boolean on;

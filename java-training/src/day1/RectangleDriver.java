@@ -1,3 +1,5 @@
+package day1;
+
 public class RectangleDriver {
     public static void main(String[] args) {
         Rectangle rectangle = new Rectangle(new Point(1,5), new Point(5,2));
@@ -5,6 +7,6 @@ public class RectangleDriver {
     }
 }
 /*
-Design a class that represents a TV
+Design a class that represents a day1.TV
 
  */

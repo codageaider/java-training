@@ -1,3 +1,5 @@
+package day1;
+
 public class Rectangle {
     Point topLeftPoint; // composition
     Point bottomRightPoint;
