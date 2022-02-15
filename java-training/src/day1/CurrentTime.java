@@ -1,3 +1,5 @@
+package day1;
+
 public class CurrentTime {
     public static void main(String[] args) {
         long millisecs=System.currentTimeMillis();

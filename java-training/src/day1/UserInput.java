@@ -1,4 +1,5 @@
-import java.sql.PreparedStatement;
+package day1;
+
 import java.util.Scanner;
 
 public class UserInput {

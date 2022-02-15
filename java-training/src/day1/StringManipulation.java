@@ -1,3 +1,5 @@
+package day1;
+
 public class StringManipulation {
     public static void main(String[] args) {
         String temp = "This is a sample sentence";

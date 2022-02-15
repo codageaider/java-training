@@ -1,3 +1,5 @@
+package day1;
+
 public class PrintTriangle {
     public static void main(String[] args) {
         // recursive function gives Stack over flow error for n >=12000

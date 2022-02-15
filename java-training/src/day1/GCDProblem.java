@@ -1,3 +1,5 @@
+package day1;
+
 public class GCDProblem {
     public static void main(String[] args) {
         // write a function to compute gcd of two numbers

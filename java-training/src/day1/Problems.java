@@ -1,3 +1,5 @@
+package day1;
+
 public class Problems {
     public static void main(String[] args) {
         Point x = new Point(1, 2);
