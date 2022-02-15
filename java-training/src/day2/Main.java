@@ -1,7 +1,7 @@
 package day2;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         int[] array = new int[]{1,2,3,4,5};
         // General for loop
         for(int i=0;i<array.length;i++)
@@ -46,6 +46,8 @@ public class Main {
     for(int i=0;i<arr2.length;i++){
         System.out.print(arr2[i]+" ");
     }
+    Circle circle = new Circle(-1);
+
 
 
     }
