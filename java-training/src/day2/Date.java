@@ -36,4 +36,6 @@ public class Date {
         return isValid;
     }
 // write a class that represents a student
+    // write a person class
+    // write a faculty class
 }
