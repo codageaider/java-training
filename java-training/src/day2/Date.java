@@ -19,20 +19,20 @@ public class Date {
     private boolean validate(int day, int month, int year) {
         boolean isValid = true;
 
-        if(months that have 31 days){
-            if(day>31)
-                isValid=false;
-        }
-        if(months that have 30 days){
-            if(day>30)
-                isValid=false;
-        }
-        else if(isLeapYear(year) && day>29 || !isLeapYear(year) && day >28)
-            isValid=false;
-        else if(month<=0 || month>12)
-            isValid=false;
-        else if(year<=0)
-            isValid=false;
+//        if(months that have 31 days){
+//            if(day>31)
+//                isValid=false;
+//        }
+//        if(months that have 30 days){
+//            if(day>30)
+//                isValid=false;
+//        }
+//        else if(isLeapYear(year) && day>29 || !isLeapYear(year) && day >28)
+//            isValid=false;
+//        else if(month<=0 || month>12)
+//            isValid=false;
+//        else if(year<=0)
+//            isValid=false;
         return isValid;
     }
 // write a class that represents a student
