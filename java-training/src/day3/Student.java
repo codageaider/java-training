@@ -32,5 +32,5 @@ public class Student implements Comparable{
         return Integer.compare(rollNumber,student.getRollNumber());
     }
     // write a compareTo function which sorts the student array by name instead of roll number
-    
+
 }

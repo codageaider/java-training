@@ -13,8 +13,8 @@ public class Example {
         Arrays.sort(states); // String class implements compareTo method.
         for(String state: states)
             System.out.println(state);
-        Student[] students = {new Student("name-1",100), new Student("name-2",200), new Student("name-3",150),
-        new Student("name-4",1)};
+        Student[] students = {new Student("tim",100), new Student("aim",200), new Student("durk",150),
+        new Student("ceaser",1)};
         Arrays.sort(students);
         for(Student student:students)
             System.out.println(student.getName() + ", "+student.getRollNumber());
