@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ListExample {
+public class ExceptionExample {
     public static void main(String[] args) {
 //        // wrapper classes Integer, Double
 //        List<Integer> list = new ArrayList<>();
@@ -37,6 +37,25 @@ public class ListExample {
               // print out more details about the exception
             ex.getDenom();
         }
+        // write a function that takes a list of Integers and an index
+        // and returns the value of the item at that index
+        // (i) Why we need to catch exception
+        // (ii) Try writing your custom Exception to handle this case.
+
+        try {
+            int [] list = new int[10];
+
+            System.out.println(list[0]);
+        } catch(ArithmeticException ex){
+            System.out.println("ArithmeticException");
+        } catch(RuntimeException runtimeException){
+            System.out.println("RuntimeException");
+        } catch(Exception ex){
+            System.out.println("Exception");
+        } finally {
+            System.out.println("finally");
+        }
+
     }
 
     // example of overloading
@@ -74,6 +93,7 @@ public class ListExample {
         result = num / denom;
         return result;
     }
+
     /*
     1) RunTimeException , example : ArithmeticException
        We don't need to handle it or provide a throws declaration in the method signature
