@@ -72,4 +72,11 @@ public class IOExample {
 
         }
     }
+    // fibonacci series?
+    // fib(1) = 1 fib(2) = 1 fib(3) = 2 , fib(4)=3
+    // fib(n) = fib(n-1) + fib(n-2)
+    //  write a code for computing the nth fibonacci number
+    // iteratively and recursively both
+
+    //Q2: int sum(int number) and returns the sum of it's digit
 }
