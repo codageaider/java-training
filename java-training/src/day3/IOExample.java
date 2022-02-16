@@ -56,5 +56,20 @@ public class IOExample {
             System.out.println(date);
 
         }
+//        int[] numbers = {1,2,3,4,5};
+//        String[] strings = {"string-1","string-2","string-3"};
+//        try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("array.dat"));){
+//            objectOutputStream.writeObject(numbers);
+//            objectOutputStream.writeObject(strings);
+//        }
+        try(ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream("array.dat"));){
+            int[] numbers2=(int[])objectInputStream.readObject();
+            String[] strings2 = (String[])objectInputStream.readObject();
+            for(int number:numbers2)
+                System.out.println(number);
+            for(String str:strings2)
+                System.out.println(str);
+
+        }
     }
 }
