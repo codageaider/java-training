@@ -2,7 +2,7 @@ package day3;
 
 public class Driver {
     public static void main(String[] args) {
-        CustomStack<Integer> integerCustomStack = new CustomStack<>();
+        GenericStack<Integer> integerCustomStack = new GenericStack<>();
         integerCustomStack.push(1);
         integerCustomStack.push(2);
         integerCustomStack.push(3);
