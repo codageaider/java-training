@@ -10,6 +10,9 @@ import java.util.Scanner;
 File class
  */
 public class IOExample {
+    public IOExample() throws IOException {
+    }
+
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         File file = new File("test.txt");
         System.out.println(file.getName());
@@ -48,9 +51,9 @@ public class IOExample {
 //            objectOutputStream.writeUTF("This is from object output stream");
 //            objectOutputStream.writeObject(new Date());
 //        }
-        try(ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream("object.data"));){
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("object.data"));) {
             String sentence = objectInputStream.readUTF();
-            Date date= (Date) objectInputStream.readObject();
+            Date date = (Date) objectInputStream.readObject();
             System.out.println("------------------");
             System.out.println(sentence);
             System.out.println(date);
@@ -62,21 +65,34 @@ public class IOExample {
 //            objectOutputStream.writeObject(numbers);
 //            objectOutputStream.writeObject(strings);
 //        }
-        try(ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream("array.dat"));){
-            int[] numbers2=(int[])objectInputStream.readObject();
-            String[] strings2 = (String[])objectInputStream.readObject();
-            for(int number:numbers2)
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("array.dat"));) {
+            int[] numbers2 = (int[]) objectInputStream.readObject();
+            String[] strings2 = (String[]) objectInputStream.readObject();
+            for (int number : numbers2)
                 System.out.println(number);
-            for(String str:strings2)
+            for (String str : strings2)
                 System.out.println(str);
 
         }
-    }
-    // fibonacci series?
-    // fib(1) = 1 fib(2) = 1 fib(3) = 2 , fib(4)=3
-    // fib(n) = fib(n-1) + fib(n-2)
-    //  write a code for computing the nth fibonacci number
-    // iteratively and recursively both
 
-    //Q2: int sum(int number) and returns the sum of it's digit
+//        Student student = new Student("random", 1);
+//        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("student.dat"));) {
+//            objectOutputStream.writeObject(student);
+//        }
+
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("student.dat"));) {
+
+            Student student= (Student) objectInputStream.readObject();
+            System.out.println(student.getName() + " , "+student.getRollNumber());
+
+
+        }
+        // fibonacci series?
+        // fib(1) = 1 fib(2) = 1 fib(3) = 2 , fib(4)=3
+        // fib(n) = fib(n-1) + fib(n-2)
+        //  write a code for computing the nth fibonacci number
+        // iteratively and recursively both
+
+        //Q2: int sum(int number) and returns the sum of it's digit
+    }
 }

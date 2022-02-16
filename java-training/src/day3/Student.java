@@ -1,6 +1,8 @@
 package day3;
 
-public class Student implements Comparable{
+import java.io.Serializable;
+
+public class Student implements Comparable, Serializable {
     private String name;
     private int rollNumber;
 
