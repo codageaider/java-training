@@ -24,6 +24,7 @@ public class GenericStack<E> {
 
     public int getSize() {
         return list.size();
+
     }
 
     @Override
