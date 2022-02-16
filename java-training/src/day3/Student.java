@@ -2,7 +2,7 @@ package day3;
 
 import java.io.Serializable;
 
-public class Student implements Comparable, Serializable {
+public class Student implements Comparable<Student>, Serializable {
     private String name;
     private int rollNumber;
 
@@ -29,9 +29,9 @@ public class Student implements Comparable, Serializable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        Student student  = (Student) o;
-        return Integer.compare(rollNumber,student.getRollNumber());
+    public int compareTo(Student o) {
+        return Integer.compare(rollNumber,o.getRollNumber());
+
     }
     // write a compareTo function which sorts the student array by name instead of roll number
 

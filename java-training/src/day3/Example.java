@@ -18,5 +18,7 @@ public class Example {
         Arrays.sort(students);
         for(Student student:students)
             System.out.println(student.getName() + ", "+student.getRollNumber());
+        CustomStack customStack = new CustomStack();
+
     }
 }
