@@ -75,6 +75,11 @@ count++ <-- this is the instruction that we are asking our 3 threads to execute.
 count = count + 1
 Java code -> .class files (bytecode) -> machine language code is generated
 (Assembly language coding -> registers and everything)
+Java is platform independent -> ?
+C, C++ they are not platform independent.
+gcc a.c -> a.exe <-- executable file. This is machine code
+when you compile a java code -> it produces a class file which is a bytecode
+Java virtual machine -> this is responsible for converting bytecode to machine code.
 mainRegister=1
 count++;
 register2 = 2   (CPU ALU unit does the calculation)
