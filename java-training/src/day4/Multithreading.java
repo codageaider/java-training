@@ -44,6 +44,8 @@ public class Multithreading {
         for(int i=0;i<=100;i++){
             System.out.println("3");
         }
+        CustomThread customThread = new CustomThread(5);
+        customThread.start();
 
     }
 }
