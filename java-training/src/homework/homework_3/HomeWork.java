@@ -17,7 +17,7 @@ write a function that returns for each genre the song that is played
 the maximum number of times.
 
 song = {"title-1", 5 , ["pop","rock"]}, {"title-2",6,["pop"]}, {"title-3",4,["rock"]}
-output: 
+output:
 pop -> title-2,6
 rock -> title-1, 5
  */
