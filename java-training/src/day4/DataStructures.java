@@ -183,4 +183,12 @@ public class DataStructures {
         while(queue1.size()>0)
             System.out.println(queue1.remove());
     }
+    // 1) write a function that takes a list of integer and return maximum element
+    // from the list
+    // 2) write a function that takes a list of integer and return the first maximum element
+    // and second maximum from the list
+    // 3) write a function that takes a list of integer and a number k
+    // and returns the first k maximum numbers
+
+
 }
