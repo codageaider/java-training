@@ -30,7 +30,7 @@ public class Multithreading {
     But suppose you don't want to wait for Task-1 to be finished before starting Task-2
 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // first all the 1's will get printed and then all the 2's will get printed.
         Print print1 = new Print(1, 100); // one thread will execute this task
         Print print2 = new Print(2,100); // one thread will execute this task
@@ -38,6 +38,12 @@ public class Multithreading {
         Thread thread2 = new Thread(print2);
         thread1.start();
         thread2.start();
+
+        thread1.join(); // it forces the thread to wait for thread1 to finish
+        thread2.join(); // this will force the thread to wait till thread2 is finish
+        for(int i=0;i<=100;i++){
+            System.out.println("3");
+        }
 
     }
 }
@@ -52,8 +58,14 @@ public class Multithreading {
 
          @Override
          public void run() {
-             for(int i=0;i<numOfTimeToPrint;i++)
+             for(int i=0;i<numOfTimeToPrint;i++) {
                  System.out.println(integerToPrint);
+//                 try {
+//                     Thread.sleep(1000);
+//                 } catch (InterruptedException e) {
+//                     e.printStackTrace();
+//                 }
+             }
          }
      }
 
