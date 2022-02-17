@@ -182,6 +182,76 @@ public class DataStructures {
         System.out.println("Giving 25 the highest priority");
         while(queue1.size()>0)
             System.out.println(queue1.remove());
+
+        /*
+        Set in java. Its a datastructure for storing non duplicate elements
+        HashSet, LinkedHashSet, TreeSet
+        HashSet
+        (i) It contains non duplicate elements
+        (ii) It doesn't maintain order of elements
+         */
+        Set<Integer> set = new HashSet<>();
+        set.add(10);
+        set.add(10);
+        set.add(20);
+        set.add(30);
+        set.add(40);
+        set.add(25);
+        set.add(35);
+
+        System.out.println("Elements in the set");
+        for(Integer element: set){
+            System.out.println(element);
+        }
+        System.out.println("is 35 there : "+set.contains(35));
+        System.out.println("size of set = "+set.size());
+
+        Set<Integer> linkedHashSet = new LinkedHashSet<>();
+        linkedHashSet.add(1);
+        linkedHashSet.add(1);
+        linkedHashSet.add(2);
+        linkedHashSet.add(3);
+        linkedHashSet.add(5);
+        linkedHashSet.add(4);
+        System.out.println("size of linked hash set : "+linkedHashSet.size());
+        System.out.println("elements of the linked hash set");
+        for(Integer element: linkedHashSet){
+            System.out.println(element);
+        }
+        // write a function that takes a list of integers and remove
+        // all duplicate copies of integers.
+        //list = 1,2,3,4,4,4,4,3,3,2,2,1,1
+        // 1,2,3,4
+        System.out.println("Elements of the tree set ");
+        TreeSet<Integer> treeSet = new TreeSet<>(linkedHashSet);
+        System.out.println(treeSet);
+        System.out.println("Elements in the headset");
+        System.out.println(treeSet.headSet(3));
+
+
+        // Map -> interface
+        // HashMap, LinkedHashMap, TreeMap
+        // It is a container to store a collection of key value pairs.
+        // state-1 -> captial-1 , state-2 ->captial-2
+        Map<String,String> map = new HashMap<>();
+        map.put("karnataka","capital-1");
+        map.put("haryana","capital-2");
+        map.put("aaryana","capital-2");
+        map.put("caryana","capital-2");
+        map.put("earyana","capital-2");
+        map.put("laryana","capital-2");
+
+        System.out.println(map);
+        Map<String,String> treeMap = new TreeMap<>(map);
+        System.out.println(treeMap);
+        // get operation takes O(1) time on average or some contant amount of time.
+      // write a function that takes a sentence and prints out
+        // each word and its count
+        // String text = "this is a sample text is a "
+        // is -> 2 , this -> 1 , sample -> 1, text ->1 , a -> 2
+
+
+
     }
     // 1) write a function that takes a list of integer and return maximum element
     // from the list
@@ -190,5 +260,16 @@ public class DataStructures {
     // 3) write a function that takes a list of integer and a number k
     // and returns the first k maximum numbers
 
+    public static List<Integer> Kmax(List<Integer> al , int k){
+        List<Integer> ans=new ArrayList<>();
+        if(k>al.size())
+            return ans;
 
+        Collections.sort(al);
+        for(int i=al.size()-1;i>= al.size()-k;i--){
+            ans.add(al.get(i));
+
+        }
+        return ans;
+    }
 }
