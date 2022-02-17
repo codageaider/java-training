@@ -95,4 +95,14 @@ public class Multithreading {
              }
          }
      }
+     /*
+     Take an array of integers may be say 1000 integers
+     and split it into two task
+     Task-1 should sum the numbers from 0 to 499
+     and Task-2 should sum the numbers from 500 to 999
+     Take the response from both the tasks and add it up and print the sum.
+     sum(in[] array){
+     }
+
+      */
 
