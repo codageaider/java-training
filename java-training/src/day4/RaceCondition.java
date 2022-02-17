@@ -10,8 +10,8 @@ public class RaceCondition {
         thread2.start();
         thread3.start();
 
-        while(true){
-            if(!thread1.isAlive() && !thread2.isAlive() && !thread3.isAlive())
+        while (true) {
+            if (!thread1.isAlive() && !thread2.isAlive() && !thread3.isAlive())
                 break;
         }
 
@@ -34,7 +34,11 @@ class Counter implements Runnable {
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
-            count++;
+            synchronized (this) {
+                count++;
+            }
+            // synchronized -> Only one thread will be allowed to enter
+            // this block at a time.
         }
     }
 
