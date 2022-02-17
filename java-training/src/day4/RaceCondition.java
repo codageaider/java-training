@@ -1,6 +1,7 @@
 package day4;
 
 public class RaceCondition {
+    public static Object object = new Object();
     public static void main(String[] args) throws InterruptedException {
         Counter counter = new Counter();
         Thread thread1 = new Thread(counter);
@@ -9,6 +10,7 @@ public class RaceCondition {
         thread1.start();
         thread2.start();
         thread3.start();
+
 
         while (true) {
             if (!thread1.isAlive() && !thread2.isAlive() && !thread3.isAlive())
@@ -39,9 +41,30 @@ class Counter implements Runnable {
             }
             // synchronized -> Only one thread will be allowed to enter
             // this block at a time.
+            // synchronized it obtains a lock on the object that is passed to the synchronized block
+            // A thread can only enter this block after obtaining the lock on the object.
+            // thread1 enters this.  this.lock() and enter it and once it exits it will unlock it
+            // this.unlock()
+            // thread2 enters this.  this.lock() <-- fail because a lock has already been obtains.
+
         }
     }
 
+
+    void increment(){
+        synchronized (this){
+          // if thread1 is here no other thread can enter this block
+       // thread1 can be here is lock is obtained on different objects
+        }
+    }
+
+    void decrement(){
+        synchronized (RaceCondition.object){
+         // If thread1 is in increment block. then thread2 will not be
+            // allowed to execute in increment and decrement
+// thread2 can be here simultaneously while thread1 is executing in the increment block
+        }
+    }
     public int getCount() {
         return count;
     }
