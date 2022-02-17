@@ -152,5 +152,35 @@ public class DataStructures {
 
 // write a priority queue of strings which removes the elements in descending order
         // lexicographically without using the Collections.reverseOrder()
+        PriorityQueue <String> que=new PriorityQueue(new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                String s1=(String) o1;
+                String s2=(String) o2;
+                return s2.compareTo(s1);
+            }
+        });
+        // compare any two elements.
+        PriorityQueue <Integer> queue1=new PriorityQueue(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                // I want to assign the highest priority to the the integer 25
+                // if o1 or o2 is 25 then I should return
+                if(o1==25){
+                    return -1;
+                } else if(o2==25)
+                {
+                    return 1;
+                }
+                return Integer.compare(o1,o2);
+            }
+        });
+        queue1.add(10);
+        queue1.add(25);
+        queue1.add(15);
+        queue1.add(30);
+        System.out.println("Giving 25 the highest priority");
+        while(queue1.size()>0)
+            System.out.println(queue1.remove());
     }
 }
