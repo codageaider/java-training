@@ -32,20 +32,45 @@ public class Multithreading {
      */
     public static void main(String[] args) throws InterruptedException {
         // first all the 1's will get printed and then all the 2's will get printed.
-        Print print1 = new Print(1, 100); // one thread will execute this task
-        Print print2 = new Print(2,100); // one thread will execute this task
+        Print print1 = new Print(1, 1000); // one thread will execute this task
+        Print print2 = new Print(2,1000); // one thread will execute this task
+        Print print3 = new Print(3,1000);
         Thread thread1 = new Thread(print1);
         Thread thread2 = new Thread(print2);
+        Thread thread3 = new Thread(print3);
+
+        thread3.setPriority(Thread.MAX_PRIORITY);
+        // Very high probability that a thread will get more of CPU time.
+
+        // thread3 we assigned it a high priority max..
+        // in some cases it finished at the last.
+        // core1 , core2 , core3
+        // core1<- thread1 , core2<- thread2 , core3<-thread3, processes1, process2,...
+        // If the other high priority processes that are
+        // assigned to a core to which our high priority
+        // thread is assigned. Then
+        // our computers were single processor or single core.
+        // Then we will see that a thread will higher priority finishes first.
         thread1.start();
         thread2.start();
+        thread3.start();
+        thread1.setPriority(Thread.NORM_PRIORITY);
+        thread1.setName("thread-1");
+        thread2.setName("thread-2");
+        thread3.setName("thread-3");
 
         thread1.join(); // it forces the thread to wait for thread1 to finish
         thread2.join(); // this will force the thread to wait till thread2 is finish
-        for(int i=0;i<=100;i++){
-            System.out.println("3");
-        }
-        CustomThread customThread = new CustomThread(5);
-        customThread.start();
+        thread3.join();
+//        for(int i=0;i<=100;i++){
+//            System.out.println("3");
+//        }
+//        CustomThread customThread = new CustomThread(5);
+//        // priority is between 1 and 10
+//        // If there is a thread with higher priority then the threads with
+//        // lower prioerity will wait.
+//        customThread.setPriority(7);
+//        customThread.start();
 
     }
 }
@@ -61,7 +86,7 @@ public class Multithreading {
          @Override
          public void run() {
              for(int i=0;i<numOfTimeToPrint;i++) {
-                 System.out.println(integerToPrint);
+                 System.out.println(Thread.currentThread().getName() + " , "+integerToPrint);
 //                 try {
 //                     Thread.sleep(1000);
 //                 } catch (InterruptedException e) {
