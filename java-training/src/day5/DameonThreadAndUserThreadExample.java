@@ -1,6 +1,6 @@
 package day5;
 
-public class Example {
+public class DameonThreadAndUserThreadExample {
     public static void main(String[] args) {
         String str = "asdasda";
         // space is allocated for this string.
