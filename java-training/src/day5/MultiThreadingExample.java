@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MultiThreadingExample {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // Thread pools used to execute a task efficiently
 //        Task task = new Task();
 //        Thread thread = new Thread();
@@ -17,18 +17,27 @@ public class MultiThreadingExample {
         // It's like during the start of the program
         // you create say 10 Thread objects.
         // thread1.start() <-- run() method and start executing statements.
+// creating a threadpool of a single thread will not achieve concurrency
+//        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        // when a task is required to be executed it will create a new thread then.
+        // thread-1 is created to execute task-1 and 1 ms
+        // Task-1 terminates. thread-1 will still stay in the pool.
+        // when a next task comes Task-2 , thread-1 and assign it to Task-2
+        // The new threads created by the cachedThreadPool will stay for a short period of time.
 
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
         // creates a fixed number of threads in a pool.
         // If a thread completes executing a task, it can be reused to excute another task.
 
         // The overhead for creating the threads is when you run your program.
         // And then whenever you want to run a task at that time there is no overhead.
-        executorService.execute(new Print(1,1000));
-        executorService.execute(new Print(2,1000));
-        executorService.execute(new Print(3,1000));
-        executorService.execute(new Print(4,1000));
-        executorService.execute(new Print(5,1000));
+        executorService.execute(new Print(1,1));
+        executorService.execute(new Print(2,1));
+        executorService.execute(new Print(3,1));
+        executorService.execute(new Print(4,1));
+        executorService.execute(new Print(5,1));
+        executorService.wait();
+
         // round-robin scheduling algorithm
         // Each tasks execute a certain amount of time
         // before that tasks leaves the CPU
@@ -52,7 +61,7 @@ the software launch.
 
  */
 
-
+  executorService.shutdown();
     }
 }
 class Print implements Runnable{
@@ -69,7 +78,7 @@ class Print implements Runnable{
         for(int i=0;i<numOfTimeToPrint;i++) {
             System.out.println(Thread.currentThread().getName() + " , "+integerToPrint);
 //                 try {
-//                     Thread.sleep(1000);
+//                     Thread.sleep(10);
 //                 } catch (InterruptedException e) {
 //                     e.printStackTrace();
 //                 }

@@ -1,5 +1,7 @@
 package day4;
 
+import java.util.Scanner;
+
 public class Multithreading {
     /*
     you want to run multiple tasks concurrently.
@@ -32,14 +34,23 @@ public class Multithreading {
      */
     public static void main(String[] args) throws InterruptedException {
         // first all the 1's will get printed and then all the 2's will get printed.
-        Print print1 = new Print(1, 1000); // one thread will execute this task
-        Print print2 = new Print(2,1000); // one thread will execute this task
-        Print print3 = new Print(3,1000);
+        Print print1 = new Print(1, 1000_00); // one thread will execute this task
+        Print print2 = new Print(2,1000_00); // one thread will execute this task
+        Print print3 = new Print(3,1000_00);
         Thread thread1 = new Thread(print1);
         Thread thread2 = new Thread(print2);
         Thread thread3 = new Thread(print3);
-
-        thread3.setPriority(Thread.MAX_PRIORITY);
+        System.out.println(thread1.getState());
+       new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for(int i=0;i<10000;i++) {
+                    System.out.println(thread1.getState());
+                    System.out.println(thread2.getState());
+                    System.out.println(thread3.getState());
+                }
+            }
+        }).start();
         // Very high probability that a thread will get more of CPU time.
 
         // thread3 we assigned it a high priority max..
@@ -54,14 +65,18 @@ public class Multithreading {
         thread1.start();
         thread2.start();
         thread3.start();
-        thread1.setPriority(Thread.NORM_PRIORITY);
-        thread1.setName("thread-1");
-        thread2.setName("thread-2");
-        thread3.setName("thread-3");
 
-        thread1.join(); // it forces the thread to wait for thread1 to finish
-        thread2.join(); // this will force the thread to wait till thread2 is finish
-        thread3.join();
+//        thread1.join(); // it forces the thread to wait for thread1 to finish
+//        thread2.join(); // this will force the thread to wait till thread2 is finish
+//        thread3.join();
+//        while(true){
+//            System.out.println(thread1.getName() + " , "+thread1.getState().name());
+//            System.out.println(thread2.getName() + " , "+thread2.getState().name());
+//            System.out.println(thread3.getName() + " , "+thread3.getState().name());
+////
+////            if(!thread1.isAlive() && !thread1.isAlive() && !thread3.isAlive())
+////                break;
+//        }
 //        for(int i=0;i<=100;i++){
 //            System.out.println("3");
 //        }
@@ -74,6 +89,17 @@ public class Multithreading {
 
     }
 }
+/*
+1) Thread is created
+2) The thread is sent to the operating system to be run by the CPU
+3) Thread actually runs on the CPU
+4) The thread moves back to state-2
+5) Thread terminated
+6) Thread be running on the CPU and then thrown out of cpu because of an I/O operation
+
+
+
+ */
      class Print implements Runnable{
         private Integer integerToPrint;
         private Integer numOfTimeToPrint;
@@ -86,7 +112,10 @@ public class Multithreading {
          @Override
          public void run() {
              for(int i=0;i<numOfTimeToPrint;i++) {
-                 System.out.println(Thread.currentThread().getName() + " , "+integerToPrint);
+                 Scanner scanner = new Scanner(System.in);
+                 scanner.next();
+//                 System.out.println(Thread.currentThread().getName() +" , "+Thread.currentThread().getState().name());
+//                 System.out.println(Thread.currentThread().getName() + " , "+integerToPrint);
 //                 try {
 //                     Thread.sleep(1000);
 //                 } catch (InterruptedException e) {
