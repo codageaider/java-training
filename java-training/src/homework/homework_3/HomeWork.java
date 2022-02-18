@@ -68,7 +68,7 @@ rock -> title-1, 5
 }
 k=2
 Map<String, List<>> function(songList, int k){
-output: 
+output:
 pop ->  title-2 , 6 | title-5 , 10
 rock -> title-1 ,5 | title-3 , 4
 classical -> title-4 , 4
