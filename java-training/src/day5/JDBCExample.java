@@ -25,9 +25,12 @@ public class JDBCExample {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("select * from customers");
         while(resultSet.next()){
+            int numOfColumns = resultSet.getMetaData().getColumnCount();
+            for(int i=1;i<=numOfColumns;i++)
+                System.out.print(resultSet.getString(i) +  " | ");
 //            System.out.println(resultSet.getString(1) + " , "+ resultSet.getString(2)
 //            +" , "+resultSet.getString("address"));
-            System.out.println(resultSet);
+            System.out.println();
         }
         connection.close();
     }
