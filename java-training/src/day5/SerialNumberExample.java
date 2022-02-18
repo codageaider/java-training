@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 
 public class SerialNumberExample {
 
+    // remove duplicacy from this code.
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
         executorService.execute(new Runnable() {
@@ -13,11 +14,6 @@ public class SerialNumberExample {
                 for (int i = 0; i < 1000_00; i++)
                     System.out.println(Thread.currentThread().getName()
                             + " , " + SerialNumberGenerator.nextNumber());
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
         });
         executorService.execute(new Runnable() {
