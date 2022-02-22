@@ -9,8 +9,28 @@ public class HomeWork {
     public static void main(String[] args) {
 
     }
+    // Problem:
 // genreMaxPlayedSong(List<Song> songs, int k) -> it returns
     // for each genre the top k played songs
+
+    // genre -> song that was played the maximum number of times
+    // genre-1 -> song
+    // genre-2 -> song
+    // genre-3 -> song
+    // key, value   HashMap -> key is genre and in the value you can store song.
+    // key will alwasy store the song that is played the most time till now.
+
+    /*
+    genre-1 -> title-1, 5
+    HashMap<Genre,Song> --> genre, song that is played the max number of times.
+    List<Song> listofSongs.
+    for each song in listOfSongs
+          listOfGenre = getGenreForCurrentSong
+          for each genre : listOFGenre
+               genre is there in the hashmap
+                  we upate the hashmap if the current song is played more times
+
+     */
     public static void genreMaxPlayedSong(List<Song> songs) {
         HashMap<String, Song> map = new HashMap<>();
         for (Song song : songs) {

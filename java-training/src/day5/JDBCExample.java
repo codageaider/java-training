@@ -15,7 +15,7 @@ public class JDBCExample {
         // Loads the JDBC driver
         // JDBC code and it loads the code and executes and set things
         // so that you can run the JDBC API.
-        Class.forName("com.mysql.jdbc.Driver");
+//        Class.forName("com.mysql.jdbc.Driver");
 
         // Connect to the database
 //        Connection connection = DriverManager
@@ -32,7 +32,14 @@ public class JDBCExample {
 //            +" , "+resultSet.getString("address"));
             System.out.println();
         }
+        String sql = "update customers set  postal_code = 1000 where customer_id=2";
+        statement.executeUpdate(sql);
         connection.close();
     }
+    // CRUD - create, read, update, delete
+    // You need to compare both JDBC and Hibernate and see what are the differences
+    // between them. And in which scenarios you can use what.
+    // hibernate -> advance version of connecting with mysql Server
+    // better way to connect with the server and execute.
 
 }
