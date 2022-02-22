@@ -4,8 +4,9 @@
     <class name="day7.Person" table="Person">
         <id name="id" type="int">
             <column name="id"></column>
+            <generator class="day7.CustomIdGenerator"/>
         </id>
-        <property name="name" column="name" type="string"/>
+        <property name="name" column="name" type="string" length="1000"/>
         <property name="address" column="address" type="string"/>
 
     </class>

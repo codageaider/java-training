@@ -48,7 +48,9 @@ public class TableCreationExample {
     public static void main(String[] args) {
         // create person table
         // insert into person values(1,"name-1","address-1")
-        Person person = new Person(2, "name-2", "address-2");
+        Person person = new Person();
+        person.setName("name-custom");
+        person.setAddress("address-custom");
         // To convert it to a SQL statement
         // hibernate needs to know which table are we inserting data in.
         // and what are the data types.

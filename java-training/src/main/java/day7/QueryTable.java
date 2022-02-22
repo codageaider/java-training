@@ -14,8 +14,14 @@ public class QueryTable {
         configuration.addResource("Person.hbm.xml");
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session=sessionFactory.openSession();
+        // HQL
         List<Person> personList = session.createQuery("from Person",Person.class).getResultList();
         System.out.println(personList);
         session.close();
     }
+    /*
+    increment, generator
+    And if you don't provide any generator by default it is set to assigned.
+
+     */
 }
