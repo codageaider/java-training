@@ -72,4 +72,9 @@ public class TwoSumProblem {
            }
            return false;
        }
+       // maven -> configure hibernate
+    //  a mysql-connector jar file to our project.
+    // hibernate we have to include some more jar files to our project.
+    // maven simplifies this.
+
     }
