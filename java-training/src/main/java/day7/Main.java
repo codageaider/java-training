@@ -42,6 +42,7 @@ public class Main {
         // class is mapped to a table
         Configuration configuration = new Configuration();
         configuration.configure();
+        configuration.addAnnotatedClass(Person.class);
         configuration.addResource("Person.hbm.xml");
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session=sessionFactory.openSession();
