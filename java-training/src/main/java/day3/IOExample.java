@@ -80,7 +80,8 @@ public class IOExample {
 //            objectOutputStream.writeObject(student);
 //        }
 
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("student.dat"));) {
+        try (ObjectInputStream objectInputStream =
+                     new ObjectInputStream(new FileInputStream("student.dat"));) {
 
             Student student= (Student) objectInputStream.readObject();
             System.out.println(student.getName() + " , "+student.getRollNumber());

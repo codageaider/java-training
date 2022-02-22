@@ -6,7 +6,12 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.util.List;
+/*
 
+SessionFactory has a field
+	private final transient Map<String,Object> properties;
+
+ */
 public class QueryTable {
     public static void main(String[] args) {
         Configuration configuration = new Configuration();

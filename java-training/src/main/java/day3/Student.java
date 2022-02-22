@@ -3,7 +3,7 @@ package day3;
 import java.io.Serializable;
 
 public class Student implements Comparable<Student>, Serializable {
-    private String name;
+    private transient String name;
     private int rollNumber;
 
     public Student(String name, int rollNumber) {
