@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<hibernate-configuration xmlns="http://www.hibernate.org/xsd/orm/cfg">
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/database</property>
+        <property name="hibernate.connection.username">agbi</property>
+        <property name="hibernate.connection.password">agbi</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+    </session-factory>
+</hibernate-configuration>
