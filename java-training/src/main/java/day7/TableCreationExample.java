@@ -29,12 +29,26 @@ Another example of JPA provider is EclipseLink
 
 we need to provide it details
  */
-public class Main {
+
+/*
+Create a class called Car with
+int id, String name, int speed
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+DDL -> Data Definition Language
+none (default-value), create-only, drop, create, create-drop, validate,
+update
+
+none, update, create, create-only
+message none : creation happening? updationg happening, insertion happening
+
+ */
+public class TableCreationExample {
 
     public static void main(String[] args) {
         // create person table
         // insert into person values(1,"name-1","address-1")
-        Person person = new Person(1, "name-1", "address-1");
+        Person person = new Person(2, "name-2", "address-2");
         // To convert it to a SQL statement
         // hibernate needs to know which table are we inserting data in.
         // and what are the data types.
@@ -42,12 +56,11 @@ public class Main {
         // class is mapped to a table
         Configuration configuration = new Configuration();
         configuration.configure();
-        configuration.addAnnotatedClass(Person.class);
         configuration.addResource("Person.hbm.xml");
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session=sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(person);
+        session.persist(person);
         transaction.commit();
         session.close();
         /*
