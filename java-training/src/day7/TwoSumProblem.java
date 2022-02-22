@@ -21,18 +21,27 @@ public class TwoSumProblem {
     // O(n^2)
     // number of steps to execute this code = n^2
     // n + n-1 + n-2 + ... 1 = n *(n+1)/2 = n^2/2 + n/2 ~ n^2
+
+    // Time Complexity of this code is O(n) on average ~ n steps in average
+    // Try passing a big list and sum
     public static boolean twoSumUsingMap(List<Integer> list, Integer sum){
        Map<Integer,Integer> map = new HashMap<>();
-       // key is the number in the list and the value is
-        // how many times does that value occurs in the list.
-        // 1 , 2, 3, 4, 5, 1, 1, 4
-        // 1->3 , 2->1, 3->1, 4->2, 5->1
+       /*
+        key is the number in the list and the value is
+         how many times does that value occurs in the list.
+         1 , 2, 3, 4, 5, 1, 1, 4
+         1->3 , 2->1, 3->1, 4->2, 5->1
+
+        */
        for(Integer element: list) {
            if (map.containsKey(element))
                map.put(element, map.get(element) + 1);
            else
                map.put(element, 1);
        }
+       // Time Complexity of put, containsKey and get is O(1) on average
+        // constant amount of time like 1 step, 2 step, 3 step,,...
+        // but the steps will not be a function of n
            /*
            we will loop over the list
            and for each element we will check if sum-element is there in
@@ -53,7 +62,6 @@ public class TwoSumProblem {
             */
            for(Integer element: list) {
                int b = sum - element;
-
                if (map.containsKey(b)) {
                    if(b!=element)
                        return true;
