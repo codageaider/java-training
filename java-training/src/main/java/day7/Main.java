@@ -1,5 +1,11 @@
 package day7;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+
 /*
 Hibernate - ORM
 ORM -> Object relational mapping
@@ -24,4 +30,30 @@ Another example of JPA provider is EclipseLink
 we need to provide it details
  */
 public class Main {
+
+    public static void main(String[] args) {
+        // create person table
+        // insert into person values(1,"name-1","address-1")
+        Person person = new Person(1, "name-1", "address-1");
+        // To convert it to a SQL statement
+        // hibernate needs to know which table are we inserting data in.
+        // and what are the data types.
+        // mapping the object fields to the table columns
+        // class is mapped to a table
+        Configuration configuration = new Configuration();
+        configuration.configure();
+        configuration.addResource("Person.hbm.xml");
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        Session session=sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(person);
+        transaction.commit();
+        session.close();
+        /*
+        Configurations are done using
+        (i) XML
+        (ii) Annotations
+         */
+
+    }
 }
