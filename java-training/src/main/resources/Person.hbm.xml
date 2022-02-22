@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <hibernate-mapping xmlns="http://www.hibernate.org/xsd/orm/hbm">
 
-    <class name="Person" table="Person">
+    <class name="day7.Person" table="Person">
         <id name="id" type="int">
             <column name="id"></column>
         </id>

@@ -6,6 +6,6 @@
         <property name="hibernate.connection.username">agbi</property>
         <property name="hibernate.connection.password">agbi</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-
+        <property name="hibernate.hbm2ddl.auto">update</property>
     </session-factory>
 </hibernate-configuration>
