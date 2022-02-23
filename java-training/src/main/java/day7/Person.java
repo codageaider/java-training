@@ -21,7 +21,7 @@ public class Person {
         this.address = address;
     }
 
-    Person(){
+    public Person(){
 
     }
     public Person(int id, String name, String address) {
