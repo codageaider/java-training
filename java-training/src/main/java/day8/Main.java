@@ -6,6 +6,10 @@ the increment generator. (4-5)
 and print out the result.
 (iii) write your own CustomIdGenerator which generates a random 5 digit number
 
+(iv) create a new class Car with the following properties:
+Integer id, Double speed, String name, Float horsePower, Character maker,
+Boolean isHatchBack, Long carNumber
+I have included all the primitive data types/wrapper
  */
 public class Main {
 }
