@@ -28,5 +28,15 @@ setMarks(String marks)  <-- convert String to a list of integer
 String getMarks() -> convert the list to String
 
  */
+/*
+Note:
+*) If you want to give wrapper classes instead of the primitive data types
+ you need to provide the fully qualified class name.
+ Like for Integer you should specify - java.lang.Integer
+
+ 
+
+
+ */
 public class Main {
 }
