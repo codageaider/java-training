@@ -52,8 +52,11 @@ public class AssociationExample {
     public static void main(String[] args) {
       Session session = Utility.getSession("association.hbm.xml");
         Transaction transaction = session.beginTransaction();
-        PhoneNumber phoneNumber = new PhoneNumber(1,"12345677","airtel");
-        Person person = new Person(1,"name-1",phoneNumber);
+        PhoneNumber phoneNumber = new PhoneNumber(2,"9999","jio");
+        Person person = new Person();
+        person.setNumber(phoneNumber);
+        person.setName("name-1");
+        person.setPersonId("E1234");
         session.persist(person);
         transaction.commit();
     }

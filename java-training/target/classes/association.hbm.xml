@@ -4,9 +4,10 @@
     <class name="day8.Person" table="Person">
         <id name="id" type="int">
             <column name="id"></column>
-
+            <generator class="increment"></generator>
         </id>
         <property name="name" column="name" type="string"/>
+        <property name="personId" column="personId" type="string"/>
         <many-to-one name="number" column="number" class="day8.PhoneNumber" cascade="persist"/>
 
     </class>
