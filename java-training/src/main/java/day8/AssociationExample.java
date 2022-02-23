@@ -50,14 +50,29 @@ import utils.Utility;
  */
 public class AssociationExample {
     public static void main(String[] args) {
-      Session session = Utility.getSession("association.hbm.xml");
+        Session session = Utility.getSession("association.hbm.xml");
         Transaction transaction = session.beginTransaction();
-        PhoneNumber phoneNumber = new PhoneNumber(2,"9999","jio");
         Person person = new Person();
-        person.setNumber(phoneNumber);
-        person.setName("name-1");
-        person.setPersonId("E1234");
-        session.persist(person);
+        person.setId(1);
+        PhoneNumber phoneNumber = new PhoneNumber();
+        phoneNumber.setPerson(person);
+        phoneNumber.setNumber("99999");
+        session.persist(phoneNumber);
+        transaction.commit();
+        session.close();
+
+    }
+
+    private static void addPersonAndPhoneNumber() {
+        Session session = Utility.getSession("association.hbm.xml");
+        Transaction transaction = session.beginTransaction();
+        Person person = new Person();
+        person.setName("name");
+        PhoneNumber phoneNumber = new PhoneNumber();
+        phoneNumber.setNumber("12345678");
+        phoneNumber.setPerson(person);
+
+        session.persist(phoneNumber);
         transaction.commit();
     }
 }
