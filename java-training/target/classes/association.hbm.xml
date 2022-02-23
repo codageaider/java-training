@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/orm/hbm">
+
+    <class name="day8.Person" table="Person">
+        <id name="id" type="int">
+            <column name="id"></column>
+
+        </id>
+        <property name="name" column="name" type="string"/>
+        <many-to-one name="number" column="number" class="day8.PhoneNumber" cascade="persist"/>
+
+    </class>
+    <class name="day8.PhoneNumber" table="PhoneNumber">
+        <id name="id" type="int">
+            <column name="id"></column>
+        </id>
+        <property name="number" type="string" column="number"/>
+        <property name="serviceProvider" type="string" column="service_provider"/>
+
+    </class>
+</hibernate-mapping>
