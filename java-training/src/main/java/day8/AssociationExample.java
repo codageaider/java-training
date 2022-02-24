@@ -52,8 +52,7 @@ public class AssociationExample {
     public static void main(String[] args) {
         Session session = Utility.getSession("association.hbm.xml");
         Transaction transaction = session.beginTransaction();
-        Person person = new Person();
-        person.setId(1);
+        Person person= session.get(Person.class,1);
         PhoneNumber phoneNumber = new PhoneNumber();
         phoneNumber.setPerson(person);
         phoneNumber.setNumber("99999");
@@ -62,6 +61,7 @@ public class AssociationExample {
         session.close();
 
     }
+
 
     private static void addPersonAndPhoneNumber() {
         Session session = Utility.getSession("association.hbm.xml");

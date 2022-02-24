@@ -14,7 +14,7 @@
             <generator class="increment"></generator>
         </id>
         <property name="number" type="string" column="number"/>
-        <many-to-one name="person" column="person_id" class="day8.Person" cascade="persist"/>
+        <many-to-one name="person" column="person_id" class="day8.Person"/>
 
     </class>
 </hibernate-mapping>
