@@ -15,7 +15,7 @@ annotations ->
  (ii) annotation property
  property defines the same annotation, think of it as a modifier.
 
-
+Output of - show create table
  CREATE TABLE `student_records` (
    `student_id` int NOT NULL AUTO_INCREMENT,
    `student_name` varchar(255) DEFAULT NULL,
@@ -28,6 +28,16 @@ CREATE TABLE `student_records` (
    PRIMARY KEY (`student_id`)
  ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
+Q1
+Use a custom generator and plug it into this Student class
+
+Q2:
+(i) create a Person class and map it to person_records table
+ (ii) provide an autogeneration strategy for the Id column
+ (iii) For the name column -> varchar(200) not null
+ (iv) boolean isHired -> false
+  columnDefinition="not null" // exact query or statment that would be used in mysql
+  default
 
  */
 @Entity
