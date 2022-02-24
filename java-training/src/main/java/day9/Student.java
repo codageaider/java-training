@@ -46,16 +46,18 @@ public class Student {
     //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @GeneratedValue(generator = "custom-generator")
-    @GenericGenerator(strategy = "", name = "custom-generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "student_id")
     private int id;
     @Column(name = "student_name", nullable = false, length = 100)
     private String name;
+    private int marks;
 
-    public Student(int id, String name) {
+
+    public Student(int id, String name, int marks) {
         this.id = id;
         this.name = name;
+        this.marks = marks;
     }
 
     public Student() {
@@ -77,4 +79,20 @@ public class Student {
         this.name = name;
     }
 
+    public int getMarks() {
+        return marks;
+    }
+
+    public void setMarks(int marks) {
+        this.marks = marks;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", marks=" + marks +
+                '}';
+    }
 }
