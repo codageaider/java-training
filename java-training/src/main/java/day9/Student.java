@@ -2,6 +2,7 @@ package day9;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
+
 /*
 annotations are meta data information
 Notes or comments on what this class is about
@@ -27,16 +28,21 @@ CREATE TABLE `student_records` (
    PRIMARY KEY (`student_id`)
  ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
+
  */
 @Entity
-@Table(name="student_records")
+@Table(name = "student_records")
 public class Student {
+    //    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="student_id")
+    @GeneratedValue(generator = "custom-generator")
+    @GenericGenerator(strategy = "", name = "custom-generator")
+    @Column(name = "student_id")
     private int id;
-    @Column(name="student_name", nullable = false, length=100)
+    @Column(name = "student_name", nullable = false, length = 100)
     private String name;
+
     public Student(int id, String name) {
         this.id = id;
         this.name = name;
