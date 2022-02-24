@@ -16,7 +16,18 @@ write a function that prints out the sum of all values int the marks column.
 
 Q2:
 write a function that prints the number of rows which are having passing marks.
-or marks > 40
+ie. marks > 40
+
+Q3:
+Write a class Tweet with fields
+ (i) id <-  primary key
+ (ii) String userId
+ (iii) String tweet
+ (iv) Generate random data like in this example say 100 records
+(v)
+ write a group by clause which returns
+ for each user the count of tweets
+
 
 
  */
