@@ -66,19 +66,45 @@ many employee will be in the same department.
 (iii) create a new record
 (iv) Add multiple employees to the same department
 
+Person is like a parent entity
+PhoneNumber as a child entity
+phonumber table will have the person_id linked to person
+foreign key relation
+
+show create table PhoneNumber
+IS valid in mysql<-
+the null foreign key is allowed
+but we need to define our table phonenumber such that column person_id as not null
+
  */
 public class AssociationExample {
     public static void main(String[] args) {
+//        Session session = Utility.getSession("association.hbm.xml");
+//        Transaction transaction = session.beginTransaction();
+//        Person person= session.get(Person.class,1);
+//        PhoneNumber phoneNumber = new PhoneNumber();
+//        phoneNumber.setPerson(person);
+//        phoneNumber.setNumber("99999");
+//        session.persist(phoneNumber);
+//        transaction.commit();
+//        session.close();
+
         Session session = Utility.getSession("association.hbm.xml");
         Transaction transaction = session.beginTransaction();
-        Person person= session.get(Person.class,1);
+        Person person = new Person();
+        person.setName("name");
         PhoneNumber phoneNumber = new PhoneNumber();
+        phoneNumber.setNumber("12345678");
         phoneNumber.setPerson(person);
-        phoneNumber.setNumber("99999");
+
         session.persist(phoneNumber);
         transaction.commit();
-        session.close();
 
+        /*
+        (i) you may want to add a phonenumber with null personID
+        (ii) you may not want that.
+
+         */
     }
 
 
