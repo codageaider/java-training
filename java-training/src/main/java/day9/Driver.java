@@ -14,7 +14,7 @@ public class Driver {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Student student = new Student();
-        student.setName("student-3");
+        student.setName("student-4");
         session.persist(student);
         transaction.commit();
         session.close();
