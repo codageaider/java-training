@@ -13,6 +13,16 @@ annotations ->
  (i) annotation name
  (ii) annotation property
  property defines the same annotation, think of it as a modifier.
+
+
+ CREATE TABLE `student_records` (
+   `student_id` int NOT NULL AUTO_INCREMENT,
+   `student_name` varchar(255) DEFAULT NULL,
+   PRIMARY KEY (`student_id`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
  */
 @Entity
 @Table(name="student_records")
@@ -21,7 +31,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="student_id")
     private int id;
-    @Column(name="student_name")
+    @Column(name="student_name", nullable = false, length=100)
     private String name;
     public Student(int id, String name) {
         this.id = id;
