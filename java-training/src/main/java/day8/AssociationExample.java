@@ -47,6 +47,25 @@ import utils.Utility;
 /*
 1) Person table
 2) PhoneNumber table
+
+Many to one
+many phone numbers getmapped to a single  person
+(i) many to one on the Person class
+(ii) modifed the table so that we could store multiple phone
+numbers for a person
+(iii) many to one mapping on the phone number class.
+
+Q:
+Department
+employee
+
+many employee will be in the same department.
+
+(i)Try writing this Department class and employee class.
+(ii) define the mapping in the mapping file
+(iii) create a new record
+(iv) Add multiple employees to the same department
+
  */
 public class AssociationExample {
     public static void main(String[] args) {
