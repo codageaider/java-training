@@ -1,0 +1,18 @@
+In the PhoneNumber class
+we made a field called id and used a generator for it
+It is a primary key that's generated sequentially.
+
+remove this primary key and create a composite key
+from (person_id,number)
+
+Currently the phonenumber table that gets created has an extra column
+id as a primary key.
+After modification the table should not have this primary key
+and should have a composite key = (person_id, number)
+
+Hint:
+Try putting @Id on both
+private String number;
+private Person person;
+This will make both the fields part of the key.
+And put an annotation @IdClass on top of the class.

@@ -1,0 +1,11 @@
+design tables
+airport(id, name)
+passengers(id,name,airport_id)
+tickets(id,number,passenger_id)
+
+So the Airport class will contain a @OneToMany(mappedBy="airport") on Set<Passenger>
+Passenger class will contain a ManyToOne on airport and OneToMany on tickets
+and ticket class will contain manytoOne on passenger
+
+there could be many passengers in the passenger table.
+And each will be mapped to an airport having a particular ticket
