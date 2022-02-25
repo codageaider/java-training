@@ -21,6 +21,11 @@ criteria -> marks > 40
  aggregate functions, where, groupby -> converted to Java functions.
 
 select * from student where marks > 90
+
+Q-)
+write a query which returns the records for the student with name student-1 or student-2
+
+
  */
 public class CriteriaAPIExample {
     public static void main(String[] args) {
