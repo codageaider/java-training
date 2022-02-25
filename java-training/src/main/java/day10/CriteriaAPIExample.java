@@ -28,13 +28,31 @@ Q-) Use an aggregate function like avg to find the average marks or sum function
 Q-) write a groupby query using criteria api
 Q-) write a groupby clause that returns the name and count of records in the table for that particular name.
 
+Any advantage you can think of Using Criteria API over SQL and HQL?
+*) If you can write a code that works everywhere and in future it leads to minimal
+number of changes
+*) Criteria api there is less chance of making erros in writing queries
+"select * from user group by name order by desc"
+"select * from user group by name order by desc" +" ljk"
+
+Bad approach to use strings directly which have an internal meaning
+When you code in this way the detection of errors become very late.
+By using Criteria API we will be able to detect errors at compile time rather than runtime.
+*) It conveys more meaning.
+String sql = "select * from user" <-- This is a query
+Query query;
+
+
+criteria builder is providing useful methods to build a criteria
+criteria query is a query with a criteria-> is provided by criteria builder
  */
 public class CriteriaAPIExample {
     public static void main(String[] args) {
         Session session = Utility.getSession();
         CriteriaQuery<Student> critertiaQuery = betweenMethod(session);
         // predicate means a condition that is evaluated to true or false
-// from Student where marks > 90
+// from Student wher marks > 90
+
         System.out.println(session.createQuery(critertiaQuery).getResultList());
 
     }
@@ -51,6 +69,8 @@ public class CriteriaAPIExample {
         CriteriaQuery<Student> critertiaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = critertiaQuery.from(Student.class);
         critertiaQuery.select(root).where(criteriaBuilder.lt(root.get("marks"),10));
+        critertiaQuery.select(root).where(criteriaBuilder.lt(root.get("marks"),10));
+
         return critertiaQuery;
     }
     private static CriteriaQuery<Student> gtMethod(Session session) {

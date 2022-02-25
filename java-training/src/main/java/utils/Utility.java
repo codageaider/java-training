@@ -1,5 +1,7 @@
 package utils;
 
+import day10.Person;
+import day10.PhoneNumber;
 import day9.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,6 +20,9 @@ public class Utility {
         Configuration configuration = new Configuration();
         configuration.configure();
         configuration.addAnnotatedClass(Student.class);
+        configuration.addAnnotatedClass(Person.class);
+        configuration.addAnnotatedClass(PhoneNumber.class);
+
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
         return session;
