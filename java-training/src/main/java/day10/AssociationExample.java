@@ -18,11 +18,11 @@ public class AssociationExample {
     public static void main(String[] args) {
         Session session = Utility.getSession();
         Transaction transaction = session.beginTransaction();
-        Person person = new Person();
-        person.setName("name-2");
-        session.persist(person);
+        Person person = session.get(Person.class,1);
+        session.remove(person);
         transaction.commit();
         session.close();
+//        insertInitial();
     }
 
     private static void insertNewPhoneNumber() {

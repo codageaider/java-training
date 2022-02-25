@@ -1,9 +1,9 @@
 package day10;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /*
 Each person could have multiple phone numbers linked to it.
@@ -19,6 +19,16 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
+    private Set<PhoneNumber> phoneNumbers= new HashSet<>();
+    
+    public Set<PhoneNumber> getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
+
+
+
 
     public Person() {
     }
