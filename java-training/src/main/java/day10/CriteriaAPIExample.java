@@ -20,10 +20,41 @@ criteria -> marks > 40
  SQL -> select * from student_records
  aggregate functions, where, groupby -> converted to Java functions.
 
-Benefit
+select * from student where marks > 90
  */
 public class CriteriaAPIExample {
     public static void main(String[] args) {
+        Session session = Utility.getSession();
+        CriteriaQuery<Student> critertiaQuery = betweenMethod(session);
+        // predicate means a condition that is evaluated to true or false
+// from Student where marks > 90
+        System.out.println(session.createQuery(critertiaQuery).getResultList());
+
+    }
+
+    private static CriteriaQuery<Student> betweenMethod(Session session) {
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Student> critertiaQuery = criteriaBuilder.createQuery(Student.class);
+        Root<Student> root = critertiaQuery.from(Student.class);
+        critertiaQuery.select(root).where(criteriaBuilder.between(root.get("marks"),10,20));
+        return critertiaQuery;
+    }
+    private static CriteriaQuery<Student> ltMethod(Session session) {
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Student> critertiaQuery = criteriaBuilder.createQuery(Student.class);
+        Root<Student> root = critertiaQuery.from(Student.class);
+        critertiaQuery.select(root).where(criteriaBuilder.lt(root.get("marks"),10));
+        return critertiaQuery;
+    }
+    private static CriteriaQuery<Student> gtMethod(Session session) {
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Student> critertiaQuery = criteriaBuilder.createQuery(Student.class);
+        Root<Student> root = critertiaQuery.from(Student.class);
+        critertiaQuery.select(root).where(criteriaBuilder.gt(root.get("marks"),90));
+        return critertiaQuery;
+    }
+
+    private static void selectQuery() {
         Session session = Utility.getSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<Student> critertiaQuery = criteriaBuilder.createQuery(Student.class);
