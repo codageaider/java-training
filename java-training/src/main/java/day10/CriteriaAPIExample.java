@@ -26,6 +26,8 @@ Q-)
 write a query which returns the records for the student with name student-1 or student-2
 Q-) Use an aggregate function like avg to find the average marks or sum function.
 Q-) write a groupby query using criteria api
+Q-) write a groupby clause that returns the name and count of records in the table for that particular name.
+
  */
 public class CriteriaAPIExample {
     public static void main(String[] args) {
