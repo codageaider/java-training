@@ -3,7 +3,17 @@ package day10;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.Utility;
+/*
+Table person with id =1 and 2 phone numbers
+(i) delete a person record with person id = 1
+Table person with id =1 and 2 phone numbers
+(ii) change the cascade type to persist
+    and try deleting a person record with person id = 1
 
+Message me your findings and what is the difference in behavior in (i)
+and (ii)
+
+ */
 public class AssociationExample {
     public static void main(String[] args) {
         Session session = Utility.getSession();
