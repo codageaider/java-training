@@ -21,14 +21,10 @@ public class Person {
     private String name;
     @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
     private Set<PhoneNumber> phoneNumbers= new HashSet<>();
-    
+
     public Set<PhoneNumber> getPhoneNumbers() {
         return phoneNumbers;
     }
-
-
-
-
 
     public Person() {
     }
