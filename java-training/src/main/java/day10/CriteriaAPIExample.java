@@ -1,13 +1,13 @@
 package day10;
 
-import day9.Driver;
 import day9.Student;
-import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
 import utils.Utility;
+
+import java.util.List;
 
 /*
 various ways to fetch data
@@ -61,23 +61,25 @@ public class CriteriaAPIExample {
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<Student> critertiaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = critertiaQuery.from(Student.class);
-        critertiaQuery.select(root).where(criteriaBuilder.between(root.get("marks"),10,20));
+        critertiaQuery.select(root).where(criteriaBuilder.between(root.get("marks"), 10, 20));
         return critertiaQuery;
     }
+
     private static CriteriaQuery<Student> ltMethod(Session session) {
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<Student> critertiaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = critertiaQuery.from(Student.class);
-        critertiaQuery.select(root).where(criteriaBuilder.lt(root.get("marks"),10));
-        critertiaQuery.select(root).where(criteriaBuilder.lt(root.get("marks"),10));
+        critertiaQuery.select(root).where(criteriaBuilder.lt(root.get("marks"), 10));
+        critertiaQuery.select(root).where(criteriaBuilder.lt(root.get("marks"), 10));
 
         return critertiaQuery;
     }
+
     private static CriteriaQuery<Student> gtMethod(Session session) {
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<Student> critertiaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = critertiaQuery.from(Student.class);
-        critertiaQuery.select(root).where(criteriaBuilder.gt(root.get("marks"),90));
+        critertiaQuery.select(root).where(criteriaBuilder.gt(root.get("marks"), 90));
         return critertiaQuery;
     }
 
@@ -93,4 +95,35 @@ public class CriteriaAPIExample {
         critertiaQuery.select(root);
         System.out.println(session.createQuery(critertiaQuery).getResultList());
     }
+
+    private static CriteriaQuery<Double> average(Session session) {
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Double> criteriaQuery = criteriaBuilder.createQuery(Double.class);
+        Root<Student> root = criteriaQuery.from(Student.class);
+        criteriaQuery.select(criteriaBuilder.avg(root.get("marks")));
+        return criteriaQuery;
+    }
+
+
+    private static CriteriaQuery<Object[]> groupbyname(Session session) {
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
+        Root<Student> root = criteriaQuery.from(Student.class);
+        criteriaQuery.multiselect(root.get("name"), criteriaBuilder.count(root.get("name"))).groupBy(root.get("name"));
+        return criteriaQuery;
+    }
+
+    private static void groupedBy(Session session) {
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+
+        CriteriaQuery<Object[]> criteriaQuery = builder.createQuery(Object[].class);
+        Root<Student> root = criteriaQuery.from(Student.class);
+        criteriaQuery.multiselect(root.get("name"), builder.count(root.get("name")));
+        criteriaQuery.groupBy(root.get("name"));
+        List<Object[]> resultList = session.createQuery(criteriaQuery).getResultList();
+        resultList.forEach(student -> System.out.println("Student Name: " + student[0] + "\t count : " + student[1]));
+
+    }
+
+
 }
