@@ -8,6 +8,16 @@ public class AssociationExample {
     public static void main(String[] args) {
         Session session = Utility.getSession();
         Transaction transaction = session.beginTransaction();
+        Person person = new Person();
+        person.setName("name-2");
+        session.persist(person);
+        transaction.commit();
+        session.close();
+    }
+
+    private static void insertNewPhoneNumber() {
+        Session session = Utility.getSession();
+        Transaction transaction = session.beginTransaction();
         Person person = session.get(Person.class,1);
         PhoneNumber phoneNumber = new PhoneNumber();
         phoneNumber.setNumber("999999");
