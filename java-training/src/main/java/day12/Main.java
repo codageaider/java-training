@@ -20,10 +20,16 @@ public class Main {
         Users user = new Users();
         user.addSortingMethod(new QuickSort());
         user.sort();
-        Singleton singleton = Singleton.getInstance();
-        Singleton singleton1 = Singleton.getInstance();
-        Singleton singleton2 = Singleton.getInstance();
-        System.out.println(singleton.hashCode() + " , "+singleton1.hashCode());
+        LazySingleton lazySingleton = LazySingleton.getInstance();
+        LazySingleton lazySingleton1 = LazySingleton.getInstance();
+        LazySingleton lazySingleton2 = LazySingleton.getInstance();
+        System.out.println(lazySingleton.hashCode() + " , "+ lazySingleton1.hashCode());
+
+
+        EagerSingleton eagerSingleton = EagerSingleton.getInstance();
+        EagerSingleton eagerSingleton1= EagerSingleton.getInstance();
+        System.out.println(eagerSingleton.hashCode() + " , "+eagerSingleton1.hashCode());
+
     }
 }
 
