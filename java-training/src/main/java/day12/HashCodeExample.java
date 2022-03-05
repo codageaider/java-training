@@ -12,3 +12,8 @@ public class HashCodeExample {
 //        HashCode of quickSort2 = 1358444045
     }
 }
+/*
+
+1) Singleton Design Pattern | Allow only one object of a class to be created
+at any time
+ */

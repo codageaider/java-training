@@ -20,6 +20,10 @@ public class Main {
         Users user = new Users();
         user.addSortingMethod(new QuickSort());
         user.sort();
+        Singleton singleton = Singleton.getInstance();
+        Singleton singleton1 = Singleton.getInstance();
+        Singleton singleton2 = Singleton.getInstance();
+        System.out.println(singleton.hashCode() + " , "+singleton1.hashCode());
     }
 }
 
