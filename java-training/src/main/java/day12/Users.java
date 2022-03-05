@@ -14,12 +14,28 @@ of sorting interface.
 This is called dependency Injection
 You inject or provide a dependency from outside
 
+
  */
 public class Users {
     private List<Integer> userID;
     private Sorting sorting;
+
     public Users(){
         userID = new ArrayList<>();
+    }
+
+    public Sorting getSorting() {
+        return sorting;
+    }
+
+    // Setter Injection
+    public void setSorting(Sorting sorting) {
+        this.sorting = sorting;
+    }
+
+    // Constructor Injection
+    public Users(Sorting _sorting){
+        sorting=_sorting;
     }
     // User of this class has full control
     // over which sorting method to user.
