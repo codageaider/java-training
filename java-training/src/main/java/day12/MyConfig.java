@@ -10,7 +10,16 @@ import static org.springframework.boot.BootstrapRegistry.Scope.SINGLETON;
 @Configuration
 @ImportResource("bean-config.xml")
 public class MyConfig {
+/*
+Examples : Verify for each if the multiple objects fetched from
+the IOC Container are same or different
+(i) When you don't provide any Scope on the Bean
 
+(ii) When you provide @Scope("singleton")
+
+(iii) When you provide @Scope("prototype")
+
+ */
     @Bean
     @Scope("prototype")
     public Sorting getQuickSort() {
