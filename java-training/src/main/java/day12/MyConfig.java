@@ -12,7 +12,9 @@ import static org.springframework.boot.BootstrapRegistry.Scope.SINGLETON;
 public class MyConfig {
 
     @Bean
+    @Scope("prototype")
     public Sorting getQuickSort() {
+        System.out.println("Inside @Bean @Scope method");
         return new QuickSort();
     }
 

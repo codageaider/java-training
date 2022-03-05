@@ -25,6 +25,8 @@ public class SpringMain {
         ApplicationContext context = SpringApplication.run(MyConfig.class, args);
         Sorting quickSort = context.getBean(QuickSort.class);
         System.out.println("Hashcode of quicksort = "+quickSort.hashCode());
+         quickSort = context.getBean(QuickSort.class);
+        System.out.println("Hashcode of quicksort2 = "+quickSort.hashCode());
         quickSort.sort(new ArrayList<>());
         Sorting mergeSort = context.getBean(MergeSort.class);
         mergeSort.sort(new ArrayList<>());
