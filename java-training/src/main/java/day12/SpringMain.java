@@ -16,11 +16,21 @@ IOC Container -> Inversion of control Container or ApplicationContext.
 
  */
 @SpringBootApplication
-public class SpringBasic {
+public class SpringMain {
     public static void main(String[] args) {
-        ApplicationContext context = SpringApplication.run(Configuration.class, args);
-        QuickSort quickSort = context.getBean(QuickSort.class);
+        // Application context contains only one object provided by us
+        // QuickSort, it contains MergeSort object also
+        // fetch MergeSort object from the ApplicationContext
+        // and call sort funtion on it.
+        ApplicationContext context = SpringApplication.run(MyConfig.class, args);
+        Sorting quickSort = context.getBean(QuickSort.class);
         quickSort.sort(new ArrayList<>());
+        Sorting mergeSort = context.getBean(MergeSort.class);
+        mergeSort.sort(new ArrayList<>());
+        Sorting bubbleSort = context.getBean(BubbleSort.class);
+        bubbleSort.sort(new ArrayList<>());
+        Sorting heapSort = context.getBean(HeapSort.class);
+        heapSort.sort(new ArrayList<>());
         System.out.println("Starter spring project");
         // How we can put beans into IOC Container or Application Context
 
