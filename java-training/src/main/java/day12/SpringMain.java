@@ -24,6 +24,7 @@ public class SpringMain {
         // and call sort funtion on it.
         ApplicationContext context = SpringApplication.run(MyConfig.class, args);
         Sorting quickSort = context.getBean(QuickSort.class);
+        System.out.println("Hashcode of quicksort = "+quickSort.hashCode());
         quickSort.sort(new ArrayList<>());
         Sorting mergeSort = context.getBean(MergeSort.class);
         mergeSort.sort(new ArrayList<>());
@@ -31,6 +32,8 @@ public class SpringMain {
         bubbleSort.sort(new ArrayList<>());
         Sorting heapSort = context.getBean(HeapSort.class);
         heapSort.sort(new ArrayList<>());
+        Users users = context.getBean(Users.class);
+        users.display();
         System.out.println("Starter spring project");
         // How we can put beans into IOC Container or Application Context
 

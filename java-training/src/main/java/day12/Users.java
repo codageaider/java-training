@@ -20,6 +20,11 @@ public class Users {
     private List<Integer> userID;
     private Sorting sorting;
 
+    // Constructor Injection
+    public Users(Sorting _sorting){
+        sorting=_sorting;
+    }
+
     public Users(){
         userID = new ArrayList<>();
     }
@@ -33,10 +38,7 @@ public class Users {
         this.sorting = sorting;
     }
 
-    // Constructor Injection
-    public Users(Sorting _sorting){
-        sorting=_sorting;
-    }
+
     // User of this class has full control
     // over which sorting method to user.
     public void addSortingMethod(Sorting _sorting){
@@ -47,5 +49,9 @@ public class Users {
     }
     public void sort(){
         sorting.sort(userID);
+    }
+
+    public void display() {
+        sorting.sort(new ArrayList<>());
     }
 }
