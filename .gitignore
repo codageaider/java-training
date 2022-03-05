@@ -1,3 +1,5 @@
 */.idea/*
 */out
 .git
+java-training/target/*
+target/*
