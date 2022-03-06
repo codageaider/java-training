@@ -27,3 +27,30 @@ the same object or different object by comparing the hashcode.
 public class Main {
 
 }
+/*
+HTTP requests - GET, POST, PUT
+https://www.hostname.com <- url of the HTTP request
+https://www.hostname.com?name=value&name1=value1&name2=value2
+name=value&name1=value1&name2=value2 -> Query parameters, they are key value pairs
+https://icicibank.com/balance?accountNumber=1023  GET Request
+returns in response your balance and that balance is shown on the browser GUI
+
+JSON -> {"name" : "youname", "dob":"10-10-1990", "gender":"male"}
+https://jsonlint.com/
+
+{
+	"name": "jim",
+	"dob": "10-10-1985",
+	"age": 25,
+	"favbooks": ["book-1", "book-2", "book-3"],
+	"houseDetails": {
+		"address": "delhi",
+		"pincode": 120312
+	}
+}
+
+Ex: Construct a Json object representing A Employee,
+This will
+name, address, company, yearOfExperience, Manager, languages
+
+ */
