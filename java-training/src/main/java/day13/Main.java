@@ -53,4 +53,7 @@ Ex: Construct a Json object representing A Employee,
 This will
 name, address, company, yearOfExperience, Manager, languages
 
+JSON Object starts and ends ith {}
+JSON array looks like []
+Each element in JSON is a key value pair.
  */
