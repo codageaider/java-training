@@ -2,7 +2,19 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
         "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 <beans>
-    <bean class="day12.BubbleSort"/>
+    <bean class="day12.BubbleSort" scope="singleton" lazy-init="true"/>
     <bean class="day12.HeapSort"/>
 
 </beans>
+<!--
+Ex: After the context object is ready
+use getBean method to fetch both the beans in the xml
+one lazy and one eager.
+And verify from the logs that one of the beans is indeed lazy loaded
+and another is indeed eager loaded
+
+(ii) Add a default constructor in bothe the beans
+and print a message inside it.
+This way you will come to know when the constructor of a class is called.
+
+-->

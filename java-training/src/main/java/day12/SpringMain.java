@@ -23,6 +23,8 @@ public class SpringMain {
         // fetch MergeSort object from the ApplicationContext
         // and call sort funtion on it.
         ApplicationContext context = SpringApplication.run(MyConfig.class, args);
+        System.out.println("context object is ready");
+
         Sorting quickSort = context.getBean(QuickSort.class);
         System.out.println("Hashcode of quicksort = "+quickSort.hashCode());
          quickSort = context.getBean(QuickSort.class);
