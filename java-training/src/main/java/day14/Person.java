@@ -7,7 +7,8 @@ import org.springframework.stereotype.Component;
 public class Person {
     private String name;
     private String id;
-    @Autowired
+    // Field Injection
+//    @Autowired
     private Address address;
 
     public Person() {
@@ -25,5 +26,11 @@ public class Person {
 
     public Address getAddress() {
         return address;
+    }
+
+    @Autowired
+    public void setAddress(Address address) {
+        System.out.println("Setter for Person getting called");
+        this.address = address;
     }
 }
