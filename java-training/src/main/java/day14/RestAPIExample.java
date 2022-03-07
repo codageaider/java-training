@@ -8,20 +8,31 @@ HTTP API which you call and it returns some data it is also called
 REST API
 domain/ -> Get request and it has to return all the tweets
 http://localhost:8080/tweets GET
-
+http://localhost:8080/tweets?mention=abc&word=def GET
 These requests are handled by Tomcat server
+
+http://localhost:8080/tweet  POST
+{"userId" : "user-1", "tweet":"tweet-message"}
  */
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 @RestController
 public class RestAPIExample {
+//    @GetMapping("/tweets")
+//    List<String> getTweets() {
+//        return Arrays.asList("tweet-1", "tweet-2", "tweet-3");
+//    }
     @GetMapping("/tweets")
-    List<String> getTweets() {
-        return Arrays.asList("tweet-1", "tweet-2", "tweet-3");
+    List<String> getTweets(@RequestParam String mention,@RequestParam String word) {
+        return Arrays.asList(mention,word);
     }
+    @PostMapping("/tweet")
+    List<String> postTweet(@RequestBody String body) {
+        return Arrays.asList(body);
+    }
+
 }
