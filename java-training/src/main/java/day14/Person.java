@@ -11,9 +11,17 @@ public class Person {
 //    @Autowired
     private Address address;
 
+    @Autowired // Constructor Injection
+    public Person(Address address) {
+        name = "name-2";
+        id = "id-2";
+        System.out.println("Inside Person address constructor");
+        this.address = address;
+    }
+
     public Person() {
-        name="name-1";
-        id="id-1";
+        name = "name-1";
+        id = "id-1";
     }
 
     public String getName() {
@@ -28,7 +36,7 @@ public class Person {
         return address;
     }
 
-    @Autowired
+    //    @Autowired Setter Injection
     public void setAddress(Address address) {
         System.out.println("Setter for Person getting called");
         this.address = address;
