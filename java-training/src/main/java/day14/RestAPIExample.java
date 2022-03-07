@@ -17,8 +17,10 @@ http://localhost:8080/tweet  POST
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class RestAPIExample {
@@ -26,10 +28,17 @@ public class RestAPIExample {
 //    List<String> getTweets() {
 //        return Arrays.asList("tweet-1", "tweet-2", "tweet-3");
 //    }
+//    @GetMapping("/tweets")
+//    List<String> getTweets(@RequestParam String mention,@RequestParam String word) {
+//        return Arrays.asList(mention,word);
+//    }
     @GetMapping("/tweets")
-    List<String> getTweets(@RequestParam String mention,@RequestParam String word) {
-        return Arrays.asList(mention,word);
+    List<String> getTweets(@RequestParam Map<String,String> requestParams) {
+        List<String> stringList = new ArrayList<>();
+         requestParams.entrySet().forEach(entry->stringList.add(entry.getValue()));
+         return stringList;
     }
+
     @PostMapping("/tweet")
     List<String> postTweet(@RequestBody String body) {
         return Arrays.asList(body);
