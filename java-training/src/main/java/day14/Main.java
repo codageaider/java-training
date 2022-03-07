@@ -1,5 +1,13 @@
 package day14;
 /*
+Ex:
+Create two classes Person and Address. Person class has an address field
+Use Constructor Injection to create Objects for Person and Address class
+Use the @Bean annotation so that they are instantiated by IOC Container.
+Make The Address Bean lazy my marking the method with annotation @Lazy
+Verify if it is indeed getting initialized lazyly by putting logs inside the
+constructor.
+
 (i) The URL (ii) HTTP Method (iii) Request Body (iv) Response Body (v) Query Parameters
 
 Ex :
@@ -16,6 +24,8 @@ which will result in delay
 (vi) Design the HTTP API with the page number.
 HTTP API should be able to fullfill all the above requirements.
 
+Here you can intrepret the word show as return. So your API should
+return say 100 tweets etc..
 ------
 Return all tweets
 Ex:
