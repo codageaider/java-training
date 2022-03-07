@@ -13,6 +13,16 @@ These requests are handled by Tomcat server
 
 http://localhost:8080/tweet  POST
 {"userId" : "user-1", "tweet":"tweet-message"}
+
+Ex: Modify all the API's that you have implemented with the following:
+(i) Include appropriate message and status code
+(ii) When the API creates some data store it in an appropriate Data structure.
+(iii) Store the tweets for a user
+(iv) Do appropriate error handling by using status codes
+(v) Ex: I make a call to tweet API ie. creation of a tweet {"id":"","tweet":"","date":""}
+        (i) Check if a user exists with this userID? <-- userProfile.
+(vi) containsInvalidChars implement this function
+
  */
 
 import org.springframework.http.HttpStatus;
@@ -45,7 +55,7 @@ public class RestAPIExample {
 //    List<String> postTweet(@RequestBody String body) {
 //        return Arrays.asList(body);
 //    }
-    private Map<String, String> users = new HashMap<>();
+    private Map<String, String> userProfile = new HashMap<>();
 
     //    User can create an account  -->POST
     @PostMapping("/create")
@@ -53,19 +63,19 @@ public class RestAPIExample {
         String email = requestBodyMap.get("email");
         String name = requestBodyMap.get("name");
 
-        users.put(email, name);
+        userProfile.put(email, name);
         return Arrays.asList(name, email);
     }
 
     //    User can fetch account details --> GET
     @GetMapping("/fetch")
     Map<String, String> getAccDetails() {
-        return users;
+        return userProfile;
     }
 
     @GetMapping("/getDetails")
     private String getAccDetails(@RequestParam String email) {
-        return users.get(email);
+        return userProfile.get(email);
     }
 
 
@@ -85,13 +95,13 @@ public class RestAPIExample {
         if (containsInvalidChars(name)) {
             responseEntity = new ResponseEntity<>("name contains invalid characters",
                     HttpStatus.BAD_REQUEST);
-        } else if (users.containsKey(email)) {
-            String currName = users.get(email);
+        } else if (userProfile.containsKey(email)) {
+            String currName = userProfile.get(email);
             if (currName.equals(name)) {
                 responseEntity = new ResponseEntity<>("No change rquired",
                         HttpStatus.OK);
             } else {
-                users.put(email, name);
+                userProfile.put(email, name);
                 responseEntity = new ResponseEntity<>("update successful",
                         HttpStatus.OK);
             }
@@ -113,8 +123,8 @@ public class RestAPIExample {
     //    User can delete account  -->DELETE
     @DeleteMapping("/delete")
     String deleteRecord(@RequestParam String email) {
-        if (users.containsKey(email)) {
-            users.remove(email);
+        if (userProfile.containsKey(email)) {
+            userProfile.remove(email);
         }
         return email + " successfully deleted";
     }
