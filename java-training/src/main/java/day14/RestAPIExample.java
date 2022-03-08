@@ -56,7 +56,18 @@ public class RestAPIExample {
 //        return Arrays.asList(body);
 //    }
     private Map<String, String> userProfile = new HashMap<>();
+    private Map<String,List<Tweet>> tweets = new HashMap<>();
+    @PostMapping("/tweet")
+    public void tweet(@RequestBody Tweet tweet){
+        System.out.println(tweet.toString());
+        String email = tweet.getEmail();
+        tweets.get(email).add(tweet);
+    }
 
+    @GetMapping("/tweet")
+    public List<Tweet> getTweet(@RequestParam String email){
+         return tweets.get(email);
+    }
     //    User can create an account  -->POST
     @PostMapping("/create")
     List<String> getTweets(@RequestBody Map<String, String> requestBodyMap) {
