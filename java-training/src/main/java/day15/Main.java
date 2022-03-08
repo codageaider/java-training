@@ -9,9 +9,10 @@ package day15;
         * user should be able to make a tweet
         * user should be able to follow another person
         * fetch the list of all tweets by a user
-        * 
-
-
+        *
+(iv) push this to your github page and send me the url
+(v) Well designed Robust API
+      * Handle error case possibilities
  */
 public class Main {
 }
