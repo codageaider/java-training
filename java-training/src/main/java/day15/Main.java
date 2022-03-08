@@ -13,6 +13,16 @@ package day15;
 (iv) push this to your github page and send me the url
 (v) Well designed Robust API
       * Handle error case possibilities
+
+(vi) Design Tables corresponding to your API's
+(vii) Store the data in the tables for persistence.
+As of now all tweets get deleted once you stop the application.
+
+-) Try integrating hibernate with the current application and see
+if you are able to make any querie
+-) Design tables
+-) SQL queries
+-) call appropriate queries from with the controller methods
  */
 public class Main {
 }
