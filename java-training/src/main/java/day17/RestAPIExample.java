@@ -1,17 +1,19 @@
 package day17;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import utils.Utility;
 
 import java.time.LocalDateTime;
 import java.util.*;
+
 /*
 <div>
     {{#users}}
@@ -71,6 +73,18 @@ public class RestAPIExample {
     private Map<String, User> userProfile = new HashMap<>();
     private Map<String, List<Tweet>> tweets = new HashMap<>();
     private Map<String, List<String>> following = new HashMap<>();
+    private Session session;
+
+    public RestAPIExample() {
+        session = Utility.getSession();
+        List<Object[]> list = session.createQuery("select name,email,password from users ", Object[].class).getResultList();
+        for (int i = 0; i < list.size(); i++) {
+            Object[] arr = list.get(i);
+            User user = new User(arr[0].toString(), arr[1].toString(), arr[2].toString());
+            userProfile.put(arr[1].toString(), user);
+        }
+
+    }
 
     /*
     Template Engine -> Mustache, JSP, Thymeleaf
@@ -81,12 +95,48 @@ public class RestAPIExample {
         if (userProfile.isEmpty())
             allAccDetails();
         List<User> users = new ArrayList<>();
-        for(Map.Entry entry: userProfile.entrySet()){
-            users.add((User)entry.getValue());
+        for (Map.Entry entry : userProfile.entrySet()) {
+            users.add((User) entry.getValue());
         }
         modelAndView.getModel().put("users", users);
         return modelAndView;
     }
+
+    @GetMapping("/loginForm")
+    public ModelAndView loginForm() {
+        ModelAndView modelAndView = new ModelAndView("login");
+        return modelAndView;
+    }
+
+    @PostMapping(value="/login", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public ModelAndView login(@RequestBody MultiValueMap<String, String> formData) {
+        if (!isUserValid(formData)) {
+           return errorMessageModelAndView("Wrong credentials");
+        }
+        ModelAndView modelAndView = new ModelAndView("profile");
+        String email = formData.get("email").get(0);
+        String name = userProfile.get(email).getName();
+        modelAndView.getModel().put("name",name);
+        modelAndView.getModel().put("email",email);
+        return modelAndView;
+    }
+
+
+    private ModelAndView errorMessageModelAndView(String message) {
+        ModelAndView modelAndView = new ModelAndView("error");
+        modelAndView.getModel().put("message",message);
+        return modelAndView;
+    }
+
+    private boolean isUserValid(MultiValueMap<String, String> map) {
+        String email = map.get("email").get(0);
+        String password = map.get("password").get(0);
+        User user = userProfile.get(email);
+        if (user.getPassword().equals(password))
+            return true;
+        return false;
+    }
+
 
     //    User can create an account  -->POST
     @PostMapping("/create")
@@ -98,11 +148,9 @@ public class RestAPIExample {
                     HttpStatus.BAD_REQUEST);
         } else {
             String email = user.getEmail();
-            Session session = getSession(User.class);
             Transaction transaction = session.beginTransaction();
             session.persist(user);
             transaction.commit();
-            session.close();
             userProfile.put(email, user);
             responseEntity = new ResponseEntity<>("User account created successfully!", HttpStatus.OK);
         }
@@ -113,14 +161,6 @@ public class RestAPIExample {
     @GetMapping("/fetchUsers")
     @ResponseBody
     Map<String, User> allAccDetails() {
-        Session session = getSession(User.class);
-        List<Object[]> list = session.createQuery("select name,email,password from users ", Object[].class).getResultList();
-        for (int i = 0; i < list.size(); i++) {
-            Object[] arr = list.get(i);
-            User user = new User(arr[0].toString(), arr[1].toString(), arr[2].toString());
-            userProfile.put(arr[1].toString(), user);
-        }
-        session.close();
         return userProfile;
     }
 
@@ -219,11 +259,9 @@ public class RestAPIExample {
                     list.add(tweet);
                     tweets.put(email, list);
                 }
-                Session session = getSession(Tweet.class);
                 Transaction transaction = session.beginTransaction();
                 session.persist(tweet);
                 transaction.commit();
-                session.close();
                 responseEntity = new ResponseEntity<>("Tweet added successfully", HttpStatus.OK);
             } else {
                 responseEntity = new ResponseEntity<>("Wrong Password", HttpStatus.BAD_REQUEST);
@@ -238,7 +276,6 @@ public class RestAPIExample {
     @GetMapping("/fetchTweets")
     @ResponseBody
     Map<String, List<Tweet>> fetchTweets() {
-        Session session = getSession(Tweet.class);
         List<Object[]> list = session.createQuery("select name,email,tweet,localDateTime from TweetTable ", Object[].class).getResultList();
         for (int i = 0; i < list.size(); i++) {
             Object[] arr = list.get(i);
@@ -253,7 +290,6 @@ public class RestAPIExample {
             }
 
         }
-        session.close();
         return tweets;
     }
 
@@ -304,12 +340,4 @@ public class RestAPIExample {
             return Arrays.asList("User doesn't follow anyone");
     }
 
-    public Session getSession(Class annotatedClass) {
-        Configuration configuration = new Configuration();
-        configuration.configure();
-        configuration.addAnnotatedClass(annotatedClass);
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        return session;
-    }
 }

@@ -13,7 +13,6 @@
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/day8" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/day9" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/homework" />
-      <excludeFolder url="file://$MODULE_DIR$/src/main/java/utils" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
