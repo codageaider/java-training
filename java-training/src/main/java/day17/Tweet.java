@@ -5,8 +5,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Component
-@Entity(name = "TweetTable")
+@Entity
 @Table(name = "TweetTable")
 public class Tweet {
     @Id

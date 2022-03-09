@@ -1,11 +1,8 @@
 package day17;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 
-@Component
-@Entity(name = "users")
+@Entity
 @Table(name = "users")
 public class User {
     @Id

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import utils.Utility;
 
+import javax.persistence.Query;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -77,11 +78,9 @@ public class RestAPIExample {
 
     public RestAPIExample() {
         session = Utility.getSession();
-        List<Object[]> list = session.createQuery("select name,email,password from users ", Object[].class).getResultList();
-        for (int i = 0; i < list.size(); i++) {
-            Object[] arr = list.get(i);
-            User user = new User(arr[0].toString(), arr[1].toString(), arr[2].toString());
-            userProfile.put(arr[1].toString(), user);
+        List<User> list = session.createQuery("from User", User.class).getResultList();
+        for (User user : list) {
+            userProfile.put(user.getEmail(), user);
         }
 
     }
@@ -108,23 +107,37 @@ public class RestAPIExample {
         return modelAndView;
     }
 
-    @PostMapping(value="/login", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @GetMapping("/getTweets")
+     public ModelAndView fetchTweets(@RequestParam String email) {
+        String hql = "from Tweet where email = :email";
+        Query query = session.createQuery(hql);
+        query.setParameter("email", email);
+        List<Tweet> tweetList = query.getResultList();
+        ModelAndView modelAndView = new ModelAndView("tweets");
+        modelAndView.getModel().put("tweets",tweetList);
+        modelAndView.getModel().put("name",tweetList.get(0).getName());
+
+        return modelAndView;
+
+    }
+
+    @PostMapping(value = "/login", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ModelAndView login(@RequestBody MultiValueMap<String, String> formData) {
         if (!isUserValid(formData)) {
-           return errorMessageModelAndView("Wrong credentials");
+            return errorMessageModelAndView("Wrong credentials");
         }
         ModelAndView modelAndView = new ModelAndView("profile");
         String email = formData.get("email").get(0);
         String name = userProfile.get(email).getName();
-        modelAndView.getModel().put("name",name);
-        modelAndView.getModel().put("email",email);
+        modelAndView.getModel().put("name", name);
+        modelAndView.getModel().put("email", email);
         return modelAndView;
     }
 
 
     private ModelAndView errorMessageModelAndView(String message) {
         ModelAndView modelAndView = new ModelAndView("error");
-        modelAndView.getModel().put("message",message);
+        modelAndView.getModel().put("message", message);
         return modelAndView;
     }
 
