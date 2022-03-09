@@ -34,8 +34,15 @@ After processing of this template and data we will have the following HTML
 /*
 User login, making tweets.
 Reference:
-(i) https://www.w3schools.com/tags/tag_form.asp
-(ii) https://www.w3docs.com/snippets/html/how-to-create-a-multi-line-text-input-field-in-html.html
+(i) Form Tag in HTML (for making http request from web page)
+https://www.w3schools.com/tags/tag_form.asp
+
+(ii) Tag to be used when making a tweet
+ https://www.w3docs.com/snippets/html/how-to-create-a-multi-line-text-input-field-in-html.html
+
+(iii) Manual for Mustache. This explains all the different kind of keyword available in mustache.
+Like {{}}, {{#}},...
+https://mustache.github.io/mustache.5.html
 
 
 Ex:
