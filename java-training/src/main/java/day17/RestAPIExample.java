@@ -31,6 +31,30 @@ After processing of this template and data we will have the following HTML
 
 </div>
  */
+/*
+User login, making tweets.
+Reference:
+(i) https://www.w3schools.com/tags/tag_form.asp
+(ii) https://www.w3docs.com/snippets/html/how-to-create-a-multi-line-text-input-field-in-html.html
+
+
+Ex:
+(i) Make an API that list down all the tweets of a user.
+You can pass email or id in the query params
+(ii) Make a separate HTML page having a button. Which when clicked
+takes to the (i) API so that it automatically lists down the tweets of the user.
+(iii) Make a simple login page with two fields for entering username and password
+and a button. When button is clicked there is either an error in case of invalid password
+or it takes to the list of all tweets that the user has made.
+(iv) Provide a field on tweets page to create a new tweet.
+This will need a field and a button to create which will link
+to the already written api for creating a tweet
+(v) Provide a button to create a new user on the login page which when clicked
+takes to another page where user can enter name and password
+
+
+
+ */
 @Controller
 public class RestAPIExample {
     private Map<String, User> userProfile = new HashMap<>();
