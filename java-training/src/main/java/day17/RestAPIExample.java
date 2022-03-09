@@ -6,19 +6,56 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
 import java.util.*;
+/*
+<div>
+    {{#users}}
+        <h3>{{email}}</h3>
+    {{/users}}
+</div>
 
-@RestController
+users = [{"email":"a@gmail.com"},{"email":"b@gmail.com"},{"email":"c@gmail.com"}]
+
+Template and data are merged or combined to finally produce and html
+After processing of this template and data we will have the following HTML
+<div>
+
+        <h3>a@gmail.com</h3>
+        <h3>b@gmail.com</h3>
+        <h3>c@gmail.com</h3>
+
+</div>
+ */
+@Controller
 public class RestAPIExample {
     private Map<String, User> userProfile = new HashMap<>();
     private Map<String, List<Tweet>> tweets = new HashMap<>();
     private Map<String, List<String>> following = new HashMap<>();
 
+    /*
+    Template Engine -> Mustache, JSP, Thymeleaf
+     */
+    @GetMapping("/displayUserDetails")
+    public ModelAndView getUserDetails() {
+        ModelAndView modelAndView = new ModelAndView("users");
+        if (userProfile.isEmpty())
+            allAccDetails();
+        List<User> users = new ArrayList<>();
+        for(Map.Entry entry: userProfile.entrySet()){
+            users.add((User)entry.getValue());
+        }
+        modelAndView.getModel().put("users", users);
+        return modelAndView;
+    }
+
     //    User can create an account  -->POST
     @PostMapping("/create")
+    @ResponseBody
     private ResponseEntity<String> createUser(@RequestBody User user) {
         ResponseEntity<String> responseEntity = null;
         if (userProfile.containsKey(user.getEmail())) {
@@ -39,6 +76,7 @@ public class RestAPIExample {
 
     //    User can all account details --> GET
     @GetMapping("/fetchUsers")
+    @ResponseBody
     Map<String, User> allAccDetails() {
         Session session = getSession(User.class);
         List<Object[]> list = session.createQuery("select name,email,password from users ", Object[].class).getResultList();
@@ -53,6 +91,7 @@ public class RestAPIExample {
 
     //    User can fetch particular account details --> GET
     @GetMapping("/getDetails")
+    @ResponseBody
     private ResponseEntity<User> getAccDetails(@RequestParam String email, String password) {
         ResponseEntity<User> responseEntity = null;
         if (userProfile.containsKey(email)) {
@@ -71,6 +110,7 @@ public class RestAPIExample {
 
     //    User can update account details  -->PUT
     @PutMapping("/update")
+    @ResponseBody
     private ResponseEntity<String> updateRecord(@RequestBody User user) {
         String email = user.getEmail();
         String updatedName = user.getName();
@@ -110,6 +150,7 @@ public class RestAPIExample {
 
     //    User can delete account  -->DELETE
     @DeleteMapping("/delete")
+    @ResponseBody
     private ResponseEntity<String> deleteRecord(@RequestParam String email, String password) {
         ResponseEntity<String> responseEntity = null;
         if (userProfile.containsKey(email)) {
@@ -130,6 +171,7 @@ public class RestAPIExample {
 
     //User can create tweet -->POST
     @PostMapping("/createTweet")
+    @ResponseBody
     ResponseEntity<String> createTweet(@RequestBody Tweet tweet, @RequestParam String password) {
         ResponseEntity<String> responseEntity = null;
         String email = tweet.getEmail();
@@ -159,6 +201,7 @@ public class RestAPIExample {
 
     //user can see all tweets
     @GetMapping("/fetchTweets")
+    @ResponseBody
     Map<String, List<Tweet>> fetchTweets() {
         Session session = getSession(Tweet.class);
         List<Object[]> list = session.createQuery("select name,email,tweet,localDateTime from TweetTable ", Object[].class).getResultList();
@@ -181,12 +224,14 @@ public class RestAPIExample {
 
     //user can see tweets from a particular account
     @GetMapping("/fetchTweetsOfUser")
+    @ResponseBody
     List<Tweet> fetchTweetsOfUser(@RequestParam String email) {
         return tweets.get(email);
     }
 
     //user can follow another user
     @PostMapping("/followUser")
+    @ResponseBody
     private ResponseEntity<String> followUsers(@RequestParam String email, String userEmail) {
         ResponseEntity<String> responseEntity = null;
         if (!userProfile.containsKey(email)) {
@@ -216,6 +261,7 @@ public class RestAPIExample {
 
     //to view following of a user
     @GetMapping("/follow")
+    @ResponseBody
     private List<String> following(@RequestParam String email) {
         if (following.containsKey(email))
             return following.get(email);
