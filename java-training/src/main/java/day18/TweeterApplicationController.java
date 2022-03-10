@@ -25,19 +25,26 @@ DAO Pattern  is to decouple the logic of database from the controller.
 Its good design practice to separate the Database logic and remaining controller logic
 or take out the databse related operations out of the controller.
 
+Benefits
+(i) It avoid duplicate code
+(ii) Code resuability
+(iii) Database related operations are put in a separate class of their own.
+So any changes to Dao classes don't affect the classes that use it
+(iv) Decouples the Database logic with other logic
+
 Ex:
 (i) Do the same for Tweet or other Entity classes you have made
 
  */
 @Controller
-public class RestAPIExample {
+public class TweeterApplicationController {
     private Map<String, User> userProfile = new HashMap<>();
     private Map<String, List<Tweet>> tweets = new HashMap<>();
     private Map<String, List<String>> following = new HashMap<>();
     @Autowired
     private UserDao userDao;
 
-    public RestAPIExample() {
+    public TweeterApplicationController() {
         List<User> list = userDao.readAll();
         for (User user : list) {
             userProfile.put(user.getEmail(), user);
