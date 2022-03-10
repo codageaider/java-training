@@ -34,7 +34,13 @@ So any changes to Dao classes don't affect the classes that use it
 
 Ex:
 (i) Do the same for Tweet or other Entity classes you have made
+Remove the session variable from the Controller
+and fix errors.
+Find out all the code which deals with database and move them to a separate class
 
+(ii) Try to make a single Dao interface and make the
+UserDaoImpl , TweetDaoImpl implement this single interface.
+(If you have other name apart from user or tweet use appropriately)
  */
 @Controller
 public class TweeterApplicationController {
