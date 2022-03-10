@@ -1,4 +1,7 @@
-package day18;
+package day18.dao;
+
+import day18.User;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -7,6 +10,7 @@ UserDAO -> USer Data access Object
 Basically this interface is used to access data from the USer table
 
  */
+@Component
 public interface UserDao {
     List<User> readAll();
     void create(User user);

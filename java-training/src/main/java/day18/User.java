@@ -1,6 +1,7 @@
 package day18;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -12,6 +13,9 @@ public class User {
     private String email;
     private String password;
 
+    public int getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }

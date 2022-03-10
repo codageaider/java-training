@@ -1,7 +1,9 @@
 package day18;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import day18.dao.TweetDao;
+import day18.dao.TweetDaoImpl;
+import day18.dao.UserDao;
+import day18.dao.UserDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,10 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import utils.Utility;
 
-import javax.persistence.Query;
-import java.time.LocalDateTime;
 import java.util.*;
 
 /*
@@ -48,10 +47,12 @@ public class TweeterApplicationController {
     private Map<String, List<Tweet>> tweets = new HashMap<>();
     private Map<String, List<String>> following = new HashMap<>();
     @Autowired
-    private UserDao userDao;
+    private UserDaoImpl userDaoImpl;
+    @Autowired
+    private TweetDaoImpl tweetDaoImpl;
 
     public TweeterApplicationController() {
-        List<User> list = userDao.readAll();
+        List<User> list = userDaoImpl.readAll();
         for (User user : list) {
             userProfile.put(user.getEmail(), user);
         }
@@ -81,14 +82,11 @@ public class TweeterApplicationController {
     }
 
     @GetMapping("/getTweets")
-     public ModelAndView fetchTweets(@RequestParam String email) {
-        String hql = "from Tweet where email = :email";
-        Query query = session.createQuery(hql);
-        query.setParameter("email", email);
-        List<Tweet> tweetList = query.getResultList();
+    public ModelAndView fetchTweets(@RequestParam String email) {
+        List<Tweet> tweetList = tweetDaoImpl.fetchTweets(email);
         ModelAndView modelAndView = new ModelAndView("tweets");
-        modelAndView.getModel().put("tweets",tweetList);
-        modelAndView.getModel().put("name",tweetList.get(0).getName());
+        modelAndView.getModel().put("tweets", tweetList);
+        modelAndView.getModel().put("name", tweetList.get(0).getName());
 
         return modelAndView;
 
@@ -134,7 +132,7 @@ public class TweeterApplicationController {
                     HttpStatus.BAD_REQUEST);
         } else {
             String email = user.getEmail();
-            userDao.create(user);
+            userDaoImpl.create(user);
             userProfile.put(email, user);
             responseEntity = new ResponseEntity<>("User account created successfully!", HttpStatus.OK);
         }
@@ -243,9 +241,7 @@ public class TweeterApplicationController {
                     list.add(tweet);
                     tweets.put(email, list);
                 }
-                Transaction transaction = session.beginTransaction();
-                session.persist(tweet);
-                transaction.commit();
+                tweetDaoImpl.create(tweet);
                 responseEntity = new ResponseEntity<>("Tweet added successfully", HttpStatus.OK);
             } else {
                 responseEntity = new ResponseEntity<>("Wrong Password", HttpStatus.BAD_REQUEST);
@@ -260,19 +256,15 @@ public class TweeterApplicationController {
     @GetMapping("/fetchTweets")
     @ResponseBody
     Map<String, List<Tweet>> fetchTweets() {
-        List<Object[]> list = session.createQuery("select name,email,tweet,localDateTime from TweetTable ", Object[].class).getResultList();
-        for (int i = 0; i < list.size(); i++) {
-            Object[] arr = list.get(i);
-            Tweet tweet = new Tweet(arr[0].toString(), arr[1].toString(), arr[2].toString(), (LocalDateTime) arr[3]);
-            String email = arr[1].toString();
-            if (tweets.containsKey(email)) {
-                tweets.get(email).add(tweet);
+        List<Tweet> list = tweetDaoImpl.readAll();
+        for (Tweet tweet : list) {
+            if (tweets.containsKey(tweet.getEmail())) {
+                tweets.get(tweet.getEmail()).add(tweet);
             } else {
                 List<Tweet> tweetList = new ArrayList<>();
                 tweetList.add(tweet);
-                tweets.put(arr[1].toString(), tweetList);
+                tweets.put(tweet.getEmail(), tweetList);
             }
-
         }
         return tweets;
     }

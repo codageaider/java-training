@@ -8,11 +8,24 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/assessments" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/day1" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/day10" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/day11" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/day12" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/day13" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/day14" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/day15" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/day17" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/day2" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/day3" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/day4" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/day5" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/day7" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/day8" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/day9" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/homework" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/utils" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

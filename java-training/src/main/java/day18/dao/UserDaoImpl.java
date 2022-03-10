@@ -1,5 +1,6 @@
-package day18;
+package day18.dao;
 
+import day18.User;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
