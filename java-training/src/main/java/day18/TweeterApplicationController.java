@@ -1,9 +1,7 @@
 package day18;
 
 import day18.dao.TweetDao;
-import day18.dao.TweetDaoImpl;
 import day18.dao.UserDao;
-import day18.dao.UserDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -46,13 +44,11 @@ public class TweeterApplicationController {
     private Map<String, User> userProfile = new HashMap<>();
     private Map<String, List<Tweet>> tweets = new HashMap<>();
     private Map<String, List<String>> following = new HashMap<>();
-    @Autowired
-    private UserDaoImpl userDaoImpl;
-    @Autowired
-    private TweetDaoImpl tweetDaoImpl;
+    private UserDao userDao;
+    private TweetDao tweetDao;
 
-    public TweeterApplicationController() {
-        List<User> list = userDaoImpl.readAll();
+    public TweeterApplicationController(TweetDao tweetDao, UserDao userDao) {
+        List<User> list = userDao.readAll();
         for (User user : list) {
             userProfile.put(user.getEmail(), user);
         }
@@ -83,7 +79,7 @@ public class TweeterApplicationController {
 
     @GetMapping("/getTweets")
     public ModelAndView fetchTweets(@RequestParam String email) {
-        List<Tweet> tweetList = tweetDaoImpl.fetchTweets(email);
+        List<Tweet> tweetList = tweetDao.fetchTweets(email);
         ModelAndView modelAndView = new ModelAndView("tweets");
         modelAndView.getModel().put("tweets", tweetList);
         modelAndView.getModel().put("name", tweetList.get(0).getName());
@@ -132,7 +128,7 @@ public class TweeterApplicationController {
                     HttpStatus.BAD_REQUEST);
         } else {
             String email = user.getEmail();
-            userDaoImpl.create(user);
+            userDao.create(user);
             userProfile.put(email, user);
             responseEntity = new ResponseEntity<>("User account created successfully!", HttpStatus.OK);
         }
@@ -241,7 +237,7 @@ public class TweeterApplicationController {
                     list.add(tweet);
                     tweets.put(email, list);
                 }
-                tweetDaoImpl.create(tweet);
+                tweetDao.create(tweet);
                 responseEntity = new ResponseEntity<>("Tweet added successfully", HttpStatus.OK);
             } else {
                 responseEntity = new ResponseEntity<>("Wrong Password", HttpStatus.BAD_REQUEST);
@@ -256,7 +252,7 @@ public class TweeterApplicationController {
     @GetMapping("/fetchTweets")
     @ResponseBody
     Map<String, List<Tweet>> fetchTweets() {
-        List<Tweet> list = tweetDaoImpl.readAll();
+        List<Tweet> list = tweetDao.readAll();
         for (Tweet tweet : list) {
             if (tweets.containsKey(tweet.getEmail())) {
                 tweets.get(tweet.getEmail()).add(tweet);
