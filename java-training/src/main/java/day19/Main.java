@@ -103,6 +103,7 @@ This line ==== is the center of conflict. The linest between <<<<< HEAD and ====
 exists in the curren branch master. And the part below the ===== and >>>>> is the content in the other branch
 that we want to merge into our current branch
 
+Ex: Create a merge conflict and resolve it.
 
  */
 public class Main {
