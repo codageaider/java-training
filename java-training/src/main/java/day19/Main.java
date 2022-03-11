@@ -62,6 +62,48 @@ See which files get restored. Do a1.txt and a2.txt both appeaer or only one of t
  2) on the new branch make some changes to an existing files.
     and add some words in between lines of an existing files
  3) merge this new branch into master
+
+ Ex:
+ 1) create a new repository on github.com and add files from the GUI
+ 2) use the commadn git clone httpurlofrepo
+ to clone the remote repository to your local machine
+
+
+ test.txt [master]  -> test.txt [add-followers] -> modify line 1 of test.txt [add-followers]
+           |
+          \/
+ modify line 1 of test.txt [master]
+
+ test.txt file is modified at line 1 in master as well as add-followers
+
+ Suppose I want to merge add-followers into test.txt
+ what should line 1 contain after we merge the changes from add-followers branch to test.txt ?
+ Should it contain the content of master only or should it contain the content of add-followers branch?
+ Or should it contain some mixture of both?
+ line-1 : This is a sample sentence -> This was a sample sentence [author-1] <-- this change
+  |
+ \/
+ line-1 : This is the sample sentence [author-2] <--
+ merge these two -> print ??
+
+ This was a sample sentence ?
+ This is the sample sentence?
+ This was the sample sentence?
+
+Merge conflict occurs when two people modify a file at the same line in two different branches.
+The only way to resolve it is to resolve it manually.
+
+<<<<<<<<< HEAD
+
+=======
+
+>>>>>>>>
+
+This line ==== is the center of conflict. The linest between <<<<< HEAD and ==== is the content that
+exists in the curren branch master. And the part below the ===== and >>>>> is the content in the other branch
+that we want to merge into our current branch
+
+
  */
 public class Main {
 }
