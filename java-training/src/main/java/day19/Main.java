@@ -48,6 +48,20 @@ See which files get restored. Do a1.txt and a2.txt both appeaer or only one of t
  5) Create a new branch : checkout -b branchname
  6) git branch
  Displays the list of all branches on your local git repository
+
+ -) Merge -> Merge two branches -> Combine the contents of the files
+ in two branches.
+ Merge add-followers files to the master branch
+ Command:
+ git merge branchname
+ merges the contents of branchname into current branch
+
+
+ Ex:
+ 1) create a new branch from master
+ 2) on the new branch make some changes to an existing files.
+    and add some words in between lines of an existing files
+ 3) merge this new branch into master
  */
 public class Main {
 }
