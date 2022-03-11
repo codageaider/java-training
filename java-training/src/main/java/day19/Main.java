@@ -37,6 +37,10 @@ See which files get restored. Do a1.txt and a2.txt both appeaer or only one of t
  gitlab, bitbucket
 
  3) git and github are two different things
+ -) git diff
+ shows the difference between the modified and last committed file
+ -) git diff --staged
+ shows the differences between the files in staging area
  4) git push
  Push the local changes to remote github.com cloud repository
  -) git pull
