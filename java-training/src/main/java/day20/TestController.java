@@ -15,7 +15,8 @@ import java.util.List;
 Ex:
 (i) Make a POST request and fetch the response
 from any POST API on reqres.in
-
+documentation for RestTemplate :
+https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/client/RestTemplate.html
  */
 @RestController
 public class TestController {
