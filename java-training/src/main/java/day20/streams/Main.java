@@ -12,6 +12,11 @@ Make a class Student with attribute marks in it.
     - reduction
     - sum function in IntStream
 
+Ex:
+Inside each student class make an attribute List<Course>
+Now store the marks in the Course class.
+ - Calculate the sum of marks of all courses of students
+ - Calculate sum of marks of each student by summing up the marks of the courses
 
 Streams API which was introduced in Java 8
 
