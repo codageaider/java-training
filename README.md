@@ -1,7 +1,7 @@
 # Infobeans java-training
-## http://www.3alearningsolutions.com/
+http://www.3alearningsolutions.com/
 
-Basic Github Tutorial:
+Basic Github Tutorial:  
 https://www.youtube.com/watch?v=iv8rSLsi1xo
 
 Hosted REST API for testing:  
