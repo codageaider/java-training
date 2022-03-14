@@ -17,4 +17,9 @@ public class ExceptionController {
     public ResponseEntity<Object> handleException2(Exception exception) {
         return new ResponseEntity<>("Tweet not found", HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(value =InvalidCredentialException.class)
+    public ResponseEntity<Object> handleException3(Exception exception) {
+        return new ResponseEntity<>("Credentials are not valid", HttpStatus.FORBIDDEN);
+    }
 }

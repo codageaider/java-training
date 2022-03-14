@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /*
 Ex:
 (i) Make a POST request and fetch the response
@@ -18,11 +19,28 @@ from any POST API on reqres.in
 documentation for RestTemplate :
 https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/client/RestTemplate.html
  */
+
+/*
+It moves the validation logic from all the methods to a separate class.
+Cons
+(i) Each time you add a new API you have to add the validation code
+(ii) Code duplicacy
+(iii) Single Responsbility Principle is violated (one of SOLID principles)
+
+Pros of using interceptor
+(i) Write the validation logic once
+
+ */
 @RestController
 public class TestController {
 
     @GetMapping("/")
     public JsonNode test(String id) throws TweetNotFoundException {
+        System.out.println("inside test method");
+        /*
+        if(!credentialsValid(userName, password))
+            throw new InvalidCredentialException();
+         */
         /* Get request from here to https://reqres.in/api/users
 
         We need to make a get request to url
