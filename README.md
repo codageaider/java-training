@@ -14,4 +14,8 @@ https://hibernate.org/orm/documentation/6.0/
 Spring Official Page  
 https://spring.io/  
 
+Java Docs  
+https://docs.oracle.com/en/java/
+
+
 
