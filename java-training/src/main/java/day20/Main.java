@@ -17,6 +17,12 @@ Ex:
 (iii) fetch the Tweet bean from Application Context and see if the
 property value is getting initialized properly
 
+
+Ex:
+(i) Declare a local exception and try throwing it from a different controller and
+post the results
+(ii) Then make the exception global and post the resutls
+
  */
 public class Main {
 }
