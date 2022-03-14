@@ -1,4 +1,4 @@
-package day20;
+package day20.spring;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.http.HttpEntity;

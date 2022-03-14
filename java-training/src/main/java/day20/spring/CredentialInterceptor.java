@@ -1,4 +1,4 @@
-package day20;
+package day20.spring;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

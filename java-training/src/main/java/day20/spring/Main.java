@@ -1,4 +1,4 @@
-package day20;
+package day20.spring;
 /*
 spring boot automatically takes care of various libraries and there versions
 (i)

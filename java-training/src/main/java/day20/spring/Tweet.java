@@ -1,4 +1,4 @@
-package day20;
+package day20.spring;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
