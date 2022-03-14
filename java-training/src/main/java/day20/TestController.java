@@ -11,7 +11,12 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+/*
+Ex:
+(i) Make a POST request and fetch the response
+from any POST API on reqres.in
 
+ */
 @RestController
 public class TestController {
 
@@ -31,7 +36,7 @@ public class TestController {
         value.add("application/json");
         httpHeaders.put("content-type", value);
         HttpEntity<JsonNode> entity = new HttpEntity<>(httpHeaders);
-
+//        restTemplate.postForEntity()
         ResponseEntity<JsonNode> responseEntity = restTemplate.exchange("https://reqres.in/api/users",
                 HttpMethod.GET, entity,
                 JsonNode.class);
