@@ -1,4 +1,4 @@
-package starter;
+package day20.streams;
 
 import java.util.List;
 

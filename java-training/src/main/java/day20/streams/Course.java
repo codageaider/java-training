@@ -1,4 +1,4 @@
-package starter;
+package day20.streams;
 
 public class Course {
     private String name;
