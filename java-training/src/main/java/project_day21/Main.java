@@ -1,6 +1,4 @@
 package project_day21;
-
-
 /*
 <div>
     {{#users}}
@@ -62,7 +60,9 @@ takes to another page where user can enter name and password
 
 (x) All Pages should have a minimal GUI
 
+(xi) Follow Good design principles
 
+(xii) Good variable naming conventions
  */
 public class Main {
 }
