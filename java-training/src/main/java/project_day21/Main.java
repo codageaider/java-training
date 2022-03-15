@@ -58,7 +58,9 @@ takes to another page where user can enter name and password
 
 (viii) Use interceptors to validate requests
 
-(ix)
+(ix) Use Streams whereever possible in your code.
+
+(x) All Pages should have a minimal GUI
 
 
  */
