@@ -20,5 +20,9 @@ Git Docs
 https://git-scm.com/docs/git  
 https://manpages.debian.org/stretch/git-man/git.1.en.html
 
+Solid Design Principles  
+https://www.baeldung.com/solid-principles  
+https://dzone.com/articles/a-gentle-and-easy-to-grasp-introduction-to-solid-p  
+
 
 
